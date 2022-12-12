@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box, HStack, VStack, Text, Spacer, Pressable } from "native-base";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import SignalementButton from '../components/SignalementButton';
 class Signalement extends React.Component {
   constructor(props) {
     super(props)
@@ -18,4 +19,4 @@ class Signalement extends React.Component {
   }
 }
 
-export default Home
+export default Signalement

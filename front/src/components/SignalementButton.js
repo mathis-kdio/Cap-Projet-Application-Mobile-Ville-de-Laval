@@ -23,4 +23,4 @@ class SignalementButton extends React.Component {
   }
 }
 
-export default Item
+export default SignalementButton

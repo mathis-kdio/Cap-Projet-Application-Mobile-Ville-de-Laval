@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/Home'
 import Cantines from '../screens/Cantines'
+import Signalement from '../screens/Signalement';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ function CantinesNav() {
 function SignalementNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
-      <Stack.Screen name="SignalementHome" component={Cantines} options={{title: 'Signalement'}}/>
+      <Stack.Screen name="SignalementHome" component={Signalement} options={{title: 'Signalement'}}/>
     </Stack.Navigator>
   );
 }
