@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from 'react-native'
 import { Button, Text, Pressable, Center, Box, NativeBaseProvider, Flex, Select, VStack, Image, Divider} from "native-base";
 import { FontAwesome, MaterialIcons, Ionicons} from '@expo/vector-icons';
+import MenusData from '../assets/MenusData.json'
 
 import bio from '../assets/bio.png'
 import local from '../assets/local.jpg'
@@ -59,7 +60,7 @@ class Menus extends React.Component {
              <Box w="100%" mt="-3" pb="2" style={styles.menuContainer}>
                 <Box mt="4" w="100%">
                     <Text ml="2" style={styles.subtitle}>Entrée</Text>
-                    <Text ml="4" style={styles.text}>P. de terre jambon emmental mayonnaise</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Entree"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -71,7 +72,7 @@ class Menus extends React.Component {
 
                 <Box mt="1" w="100%">
                     <Text ml="2" style={styles.subtitle}>Plat</Text>
-                    <Text ml="4" style={styles.text}>Aiguillettes de poulet</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Plat"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -80,7 +81,7 @@ class Menus extends React.Component {
                     </Box>
 
                     <Text ml="2" style={styles.subtitle}>Sauce</Text>
-                    <Text ml="4" style={styles.text}>Sauce fromagère (viande)</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Sauce"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -89,7 +90,7 @@ class Menus extends React.Component {
                     </Box>
 
                     <Text ml="2" style={styles.subtitle}>Garniture</Text>
-                    <Text ml="4" style={styles.text}>Brocolis</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Garniture"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -101,7 +102,7 @@ class Menus extends React.Component {
 
                 <Box mt="1" w="100%">
                     <Text ml="2" style={styles.subtitle}>Fromage</Text>
-                    <Text ml="4" style={styles.text}>+ Gruyère râpé bio</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Fromage"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -114,7 +115,7 @@ class Menus extends React.Component {
                 <Box mt="1" w="100%" style={styles.dessert}>
                   <Box mt="1">
                     <Text ml="2" style={styles.subtitle}>Dessert</Text>
-                    <Text ml="4" style={styles.text}>Clémentine</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Dessert"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -125,7 +126,7 @@ class Menus extends React.Component {
 
                   <Box mt="1" mr="1">
                     <Text ml="2" style={styles.subtitle}>Divers</Text>
-                    <Text ml="4" style={styles.text}>Pain</Text>
+                    <Text ml="4" style={styles.text}>{MenusData[0]["Divers"][0]}</Text>
                     <Box ml="4" style={styles.imgContainer}>
                       <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                       <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
@@ -136,7 +137,7 @@ class Menus extends React.Component {
                 </Box>
 
                 <Text ml="2" style={styles.subtitle}>Goûter</Text>
-                <Text ml="4" style={styles.text}>Lait bio chocolaté</Text>
+                <Text ml="4" style={styles.text}>{MenusData[0]["Gouter"][0]}</Text>
                 <Box ml="4" style={styles.imgContainer}>
                   <Image mr="1" source={bio} size={5} resizeMode='contain' alt="Bio"/>
                   <Image mr="1" source={local} size={5} resizeMode='contain' alt="Local"/>
