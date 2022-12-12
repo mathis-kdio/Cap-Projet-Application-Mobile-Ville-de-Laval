@@ -7,13 +7,12 @@ class Menus extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      type_menu: 0
     }
   }
 
   menu = {
     convives: '',
-    type_menu: ''
-
   }
 
   render() {
@@ -33,21 +32,21 @@ class Menus extends React.Component {
              </Box>
              <Box my="3" style={styles.btnContainer}>
                  <View>
-                   <Button onPress={() => this.menu.type_menu = 0} style={this.menu.type_menu == 0 ? styles.btnStyle(1) : styles.btnStyle(0)}>
-                        <Text style={[this.menu.type_menu == 0 ? styles.btnText_active : styles.btnText]}>Déjeuner</Text>
+                   <Button onPress={() => this.setState({type_menu: 0})} style={this.state.type_menu == 0 ? styles.btnStyle(1) : styles.btnStyle(0)}>
+                        <Text style={[this.state.type_menu == 0 ? styles.btnText_active : styles.btnText]}>Déjeuner</Text>
                    </Button>
                  </View>
                  <View >
-                   <Button onPress={() => this.menu.type_menu = 1} style={this.menu.type_menu == 1 ? styles.btnStyle(1) : styles.btnStyle(0)} >
-                       <Text style={[this.menu.type_menu == 1 ? styles.btnText_active : styles.btnText]}>Sans viande</Text>
+                   <Button onPress={() => this.setState({type_menu: 1})} style={this.state.type_menu == 1 ? styles.btnStyle(1) : styles.btnStyle(0)} >
+                       <Text style={[this.state.type_menu == 1 ? styles.btnText_active : styles.btnText]}>Sans viande</Text>
                    </Button>
                  </View>
                  <View>
-                   <Button onPress={() => this.menu.type_menu = 2} style={this.menu.type_menu == 2 ? styles.btnStyle(1) : styles.btnStyle(0)}>
-                        <Text style={[this.menu.type_menu == 2 ? styles.btnText_active : styles.btnText]}>Sans porc</Text>
+                   <Button onPress={() => this.setState({type_menu: 2})} style={this.state.type_menu == 2 ? styles.btnStyle(1) : styles.btnStyle(0)}>
+                        <Text style={[this.state.type_menu == 2 ? styles.btnText_active : styles.btnText]}>Sans porc</Text>
                     </Button>
                  </View>
-                 <Button onPress={() => console.log(this.menu.type_menu)}>Aloo</Button>
+                 <Button onPress={() => console.log(this.state.type_menu)}>Aloo</Button>
              </Box>
         </Box>
         
