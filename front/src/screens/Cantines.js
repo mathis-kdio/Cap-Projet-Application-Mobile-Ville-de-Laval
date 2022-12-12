@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from 'react-native'
-import { Button, Text, VStack, Center, Box, NativeBaseProvider} from "native-base";
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { Button, Text, Pressable, Center, Box, NativeBaseProvider, Flex} from "native-base";
+import { FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-class Shop extends React.Component {
+class Cantines extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,10 +14,13 @@ class Shop extends React.Component {
     return (
       <View style={styles.container}>
         <Box mx="4" my="6">
-            <Text pt="2" style={styles.title}>Choisissez une catégorie</Text>
+            <Flex direction="row">
+              <Pressable onPress={() => this.props.navigation.navigate("Home")}><Ionicons name="chevron-back" size={30} color="black"/></Pressable>
+              <Text style={styles.title} pt="2">Choisissez une catégorie</Text>
+            </Flex>
             <Box mt="6" style={styles.btnContainer}>
                  <View>
-                   <Button onPress={() => console.log("hello world")} style={styles.btn} mb="10">
+                   <Button onPress={() => this.props.navigation.navigate("Menus")} style={styles.btn} mb="10">
                     <Center>
                         <FontAwesome name="child" size={30} color="white"/>
                         <Text mt="2" style={styles.btnText}>Menus scolaires</Text>
@@ -25,7 +28,7 @@ class Shop extends React.Component {
                    </Button>
                  </View>
                  <View>
-                   <Button onPress={() => console.log("hello")} style={styles.btn} mb="10">
+                   <Button onPress={() => this.props.navigation.navigate("Menus")} style={styles.btn} mb="10">
                    <Center>
                        <MaterialIcons name="child-care" size={30} color="white"/>
                        <Text mt="2" style={styles.btnText}>Menus crèches</Text>
@@ -33,7 +36,7 @@ class Shop extends React.Component {
                    </Button>
                  </View>
                  <View>
-                   <Button onPress={() => console.log("hi")} style={styles.btn} mb="10">
+                   <Button onPress={() => this.props.navigation.navigate("Menus")} style={styles.btn} mb="10">
                     <Center>
                         <FontAwesome name="shopping-basket" size={30} color="white"/>
                         <Text mt="2" style={styles.btnText}>Menus portages</Text>
@@ -63,8 +66,9 @@ const styles = StyleSheet.create({
     flexWrap:"wrap"
   },
   btn: {
-    height: 145,
-    width: 145,
+    height: 140,
+    width: 155,
+    borderRadius: 10,
     backgroundColor: "#C30065",
   },
   btnText:{
@@ -75,4 +79,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Shop
+export default Cantines
