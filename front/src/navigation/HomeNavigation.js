@@ -6,13 +6,14 @@ import { FontAwesome } from '@expo/vector-icons';
 import Home from '../screens/Home'
 import Shop from '../screens/Shop'
 import Profil from '../screens/Profil'
+import Cantines from '../screens/Cantines'
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 function HomeNav() {
   return (
-    <Stack.Navigator initialRouteName='Home' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#ffda00'}, headerTitleStyle: {color: '#1c3969'}}}>
+    <Stack.Navigator initialRouteName='Home' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#fffff'}}}>
       <Stack.Screen name="Home" component={Home} options={{title: 'Laval Dans Ma Poche'}} />
       <Stack.Screen name="Profil" component={Profil} options={{title: 'Profil'}} />
     </Stack.Navigator>
@@ -21,21 +22,29 @@ function HomeNav() {
 
 function ShopNav() {
   return (
-    <Stack.Navigator initialRouteName='Shop' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#ffda00'}, headerTitleStyle: {color: '#1c3969'}}}>
+    <Stack.Navigator initialRouteName='Shop' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#fffff'}}}>
       <Stack.Screen name="Shop" component={Shop} options={{title: 'Shop'}} />
+    </Stack.Navigator>
+  );
+}
+
+function CantinesNav() {
+  return (
+    <Stack.Navigator initialRouteName='Cantines' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#fffff'}}}>
+      <Stack.Screen name="Cantines" component={Cantines} options={{title: 'Cantines'}}/>
     </Stack.Navigator>
   );
 }
 
 function BottomNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="ListeMatchsBottom" backBehavior='none' screenOptions={{headerShown: false, tabBarHideOnKeyboard: true, tabBarStyle: {backgroundColor: '#ffda00'}, tabBarActiveTintColor: '#1c3969', tabBarLabelStyle: {fontSize: 15}}}>
+    <BottomTab.Navigator initialRouteName="ListeMatchsBottom" backBehavior='none' screenOptions={{headerShown: false, tabBarHideOnKeyboard: true, tabBarStyle: {backgroundColor: '#C30065'}, tabBarActiveTintColor: '#ffffff', tabBarLabelStyle: {fontSize: 15}}}>
       <BottomTab.Screen
         name="HomeButton"
         component={HomeNav}
         options={{
           title: 'Home',
-          tabBarIcon: () => {return <FontAwesome name="home" size={30} color="black"/>}
+          tabBarIcon: () => {return <FontAwesome name="home" size={30} color="white"/>}
         }} 
       />
       <BottomTab.Screen 
@@ -43,15 +52,15 @@ function BottomNavigator() {
         component={ShopNav}
         options={{
           title: 'Shop',
-          tabBarIcon: () => {return <FontAwesome name="shopping-cart" size={30} color="black"/>}
+          tabBarIcon: () => {return <FontAwesome name="shopping-cart" size={30} color="white"/>}
         }}
       />
       <BottomTab.Screen 
         name="AddButton" 
-        component={HomeNav}
+        component={CantinesNav}
         options={{
-          title: 'Add Name',
-          tabBarIcon: () => {return <FontAwesome name="plus" size={30} color="black"/>}
+          title: 'Cantines',
+          tabBarIcon: () => {return <FontAwesome name="spoon" size={30} color="white"/>}
         }}
       />
       <BottomTab.Screen 
@@ -59,7 +68,7 @@ function BottomNavigator() {
         component={HomeNav}
         options={{
           title: 'Friends',
-          tabBarIcon: () => {return <FontAwesome name="comments" size={30} color="black"/>}
+          tabBarIcon: () => {return <FontAwesome name="comments" size={30} color="white"/>}
         }}
       />
       <BottomTab.Screen 
@@ -67,7 +76,7 @@ function BottomNavigator() {
         component={HomeNav}
         options={{
           title: 'Profil',
-          tabBarIcon: () => {return <FontAwesome name="user" size={30} color="black"/>}
+          tabBarIcon: () => {return <FontAwesome name="user" size={30} color="white"/>}
         }}
       />
     </BottomTab.Navigator>
