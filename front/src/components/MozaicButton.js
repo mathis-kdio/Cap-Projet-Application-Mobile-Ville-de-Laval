@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box, Pressable, Avatar, HStack, VStack, Text, Spacer, Center, Flex } from "native-base";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-class SignalementButton extends React.Component {
+class MozaicButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,8 +12,8 @@ class SignalementButton extends React.Component {
   render() {
     let { name, navigate, navigation, logo } = this.props;
     return (
-        <Box flex={1} bg="#C30065" mb="2" rounded="md" >
-        <Pressable onPress={() => navigation.navigate({navigate})}>
+      <Box flex={1} bg="#C30065" mb="2" rounded="md" >
+        <Pressable onPress={() => navigation.navigate(navigate)}>
           <Center size="175">
             <MaterialCommunityIcons name={logo} size={70} color="white"></MaterialCommunityIcons>
             <Text color="white">{name}</Text>
@@ -24,4 +24,4 @@ class SignalementButton extends React.Component {
   }
 }
 
-export default SignalementButton
+export default MozaicButton

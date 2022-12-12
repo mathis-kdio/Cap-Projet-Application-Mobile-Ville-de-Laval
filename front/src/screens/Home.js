@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HStack } from "native-base";
-import HomeButton from '../components/HomeButton';
+import MozaicButton from '../components/MozaicButton';
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -12,15 +12,17 @@ class Home extends React.Component {
   render() {
     return (
       <HStack space="2" justifyContent="center" m="2">
-        <HomeButton
+        <MozaicButton
           name="cantine"
           navigate="Cantines"
           navigation={this.props.navigation}
+          logo="shield"
         />
-        <HomeButton
+        <MozaicButton
           name="Signalements"
           navigate="Signalement"
           navigation={this.props.navigation}
+          logo="shield"
         />
       </HStack>
     )

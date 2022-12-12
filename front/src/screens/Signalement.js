@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, HStack, VStack, Text, Spacer, Pressable, Title } from "native-base";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
-import SignalementButton from '../components/SignalementButton';
+import MozaicButton from '../components/MozaicButton';
 class Signalement extends React.Component {
   constructor(props) {
     super(props)
@@ -15,16 +15,16 @@ class Signalement extends React.Component {
     <VStack flex={1} space={4} alignItems="center">
     <Text fontSize="2xl" fontWeight="bold">Choisissez une catégorie</Text>
     <HStack flex={1} space="2" justifyContent="center" m="5">
-        <SignalementButton name="Espaces Verts" navigate="Espaces_Verts" navigation={this.navigation} logo="tree"></SignalementButton>
-        <SignalementButton name="Sécurité" navigate="Securite" navigation={this.navigation} logo="shield"></SignalementButton>
+        <MozaicButton name="Espaces Verts" navigate="Espaces_Verts" navigation={this.props.navigation} logo="tree"/>
+        <MozaicButton name="Sécurité" navigate="Securite" navigation={this.props.navigation} logo="shield"/>
     </HStack>
     <HStack flex={1} space="2" justifyContent="center" m="5">
-        <SignalementButton name="Voirie" navigate="Espaces Verts" navigation={this.navigation} logo="road"></SignalementButton>
-        <SignalementButton name="Éclairage Public" navigate="Eclairage_Public" navigation={this.navigation} logo="outdoor-lamp"></SignalementButton>
+        <MozaicButton name="Voirie" navigate="Espaces Verts" navigation={this.props.navigation} logo="road"/>
+        <MozaicButton name="Éclairage Public" navigate="Eclairage_Public" navigation={this.props.navigation} logo="outdoor-lamp"/>
     </HStack>
     <HStack flex={1} space="2" justifyContent="center" m="5">
-        <SignalementButton name="Animaux" navigate="Animaux" navigation={this.navigation} logo="paw"></SignalementButton>
-        <SignalementButton name="Divers" navigate="Divers" navigation={this.navigation} logo="question"></SignalementButton>
+        <MozaicButton name="Animaux" navigate="Animaux" navigation={this.props.navigation} logo="paw"/>
+        <MozaicButton name="Divers" navigate="Divers" navigation={this.props.navigation} logo="question"/>
     </HStack>
     </VStack>
     
