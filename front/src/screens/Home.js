@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HStack } from "native-base";
 import MozaicButton from '../components/MozaicButton';
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
