@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, Pressable, Avatar, HStack, VStack, Text, Spacer } from "native-base";
-import { FontAwesome } from '@expo/vector-icons'; 
+import { Box, Pressable, Avatar, HStack, VStack, Text, Spacer, Center, Flex } from "native-base";
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 class SignalementButton extends React.Component {
   constructor(props) {
@@ -10,13 +10,14 @@ class SignalementButton extends React.Component {
   }
 
   render() {
-    let { name, navigate, navigation } = this.props;
+    let { name, navigate, navigation, logo } = this.props;
     return (
-        <Box flex={1} bg="#C30065" mb="10">
+        <Box flex={1} bg="#C30065" mb="2" rounded="md" >
         <Pressable onPress={() => navigation.navigate({navigate})}>
-          <HStack justifyContent="center">
+          <Center size="175">
+            <MaterialCommunityIcons name={logo} size={70} color="white"></MaterialCommunityIcons>
             <Text color="white">{name}</Text>
-          </HStack>
+          </Center>
         </Pressable>
       </Box>
     )
