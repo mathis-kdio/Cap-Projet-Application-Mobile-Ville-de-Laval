@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Input, Box, FlatList, HStack, VStack, Text, Spacer } from "native-base";
+import { Box, HStack, VStack, Text, Spacer, Pressable } from "native-base";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
-import Item from '../components/Item';
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -12,17 +11,22 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Box flex={1} justifyContent="center">
-        <FlatList 
-          data={this.data}
-          keyExtractor={item => item.id}
-          renderItem={({item, index}) =>
-            <Box>
-              <Item item={item}/>
-            </Box>
-          }
-        />
-      </Box>
+      <HStack space="2" justifyContent="center" m="2">
+        <Box flex={1} bg="#C30065" p="2">
+          <Pressable onPress={() => this.props.navigation.navigate("Cantines")}>
+            <HStack justifyContent="center">
+              <Text color="white">Cantines</Text>
+            </HStack>
+          </Pressable>
+        </Box>
+        <Box flex={1} bg="#C30065" p="2">
+          <Pressable onPress={() => this.props.navigation.navigate("Cantines")}>
+            <HStack justifyContent="center">
+              <Text color="white">Signalements</Text>
+            </HStack>
+          </Pressable>
+        </Box>
+      </HStack>
     )
   }
 }
