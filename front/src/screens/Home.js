@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, HStack, VStack, Text, Spacer, Pressable } from "native-base";
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { HStack } from "native-base";
+import HomeButton from '../components/HomeButton';
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -12,20 +12,16 @@ class Home extends React.Component {
   render() {
     return (
       <HStack space="2" justifyContent="center" m="2">
-        <Box flex={1} bg="#C30065" p="2">
-          <Pressable onPress={() => this.props.navigation.navigate("Cantines")}>
-            <HStack justifyContent="center">
-              <Text color="white">Cantines</Text>
-            </HStack>
-          </Pressable>
-        </Box>
-        <Box flex={1} bg="#C30065" p="2">
-          <Pressable onPress={() => this.props.navigation.navigate("Cantines")}>
-            <HStack justifyContent="center">
-              <Text color="white">Signalements</Text>
-            </HStack>
-          </Pressable>
-        </Box>
+        <HomeButton
+          name="cantine"
+          navigate="Cantines"
+          navigation={this.props.navigation}
+        />
+        <HomeButton
+          name="Signalements"
+          navigate="Cantines"
+          navigation={this.props.navigation}
+        />
       </HStack>
     )
   }
