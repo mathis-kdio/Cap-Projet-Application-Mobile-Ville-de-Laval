@@ -19,7 +19,7 @@ class Home extends React.Component {
         />
         <HomeButton
           name="Signalements"
-          navigate="Cantines"
+          navigate="Signalement"
           navigation={this.props.navigation}
         />
       </HStack>

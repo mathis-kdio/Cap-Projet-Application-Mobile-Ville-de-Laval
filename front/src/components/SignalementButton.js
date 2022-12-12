@@ -12,7 +12,7 @@ class SignalementButton extends React.Component {
   render() {
     let { name, navigate, navigation } = this.props;
     return (
-        <Box flex={1} bg="#C30065" p="2">
+        <Box flex={1} bg="#C30065" mb="10">
         <Pressable onPress={() => navigation.navigate({navigate})}>
           <HStack justifyContent="center">
             <Text color="white">{name}</Text>
