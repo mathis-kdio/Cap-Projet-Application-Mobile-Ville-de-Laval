@@ -11,6 +11,7 @@ function HomeNav() {
     <Stack.Navigator initialRouteName='Home' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="Home" component={Home} options={{title: 'Laval Dans Ma Poche'}} />
       <Stack.Screen name="Cantines" component={CantinesNav} options={{headerShown: false}} />
+      <Stack.Screen name="Signalement" component={SignalementNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -19,6 +20,14 @@ function CantinesNav() {
   return (
     <Stack.Navigator initialRouteName='CantinesHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="CantinesHome" component={Cantines} options={{title: 'Cantines'}}/>
+    </Stack.Navigator>
+  );
+}
+
+function SignalementNav() {
+  return (
+    <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
+      <Stack.Screen name="SignalementHome" component={Cantines} options={{title: 'Signalement'}}/>
     </Stack.Navigator>
   );
 }

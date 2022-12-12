@@ -20,7 +20,7 @@ class Home extends React.Component {
           </Pressable>
         </Box>
         <Box flex={1} bg="#C30065" p="2">
-          <Pressable onPress={() => this.props.navigation.navigate("Cantines")}>
+          <Pressable onPress={() => this.props.navigation.navigate("Signalement")}>
             <HStack justifyContent="center">
               <Text color="white">Signalements</Text>
             </HStack>
