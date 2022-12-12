@@ -10,7 +10,7 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <Navigation />
-        <StatusBar style="light" backgroundColor="#ffda00"/>
+        <StatusBar style="light" backgroundColor="#C30065"/>
       </NavigationContainer>
     </NativeBaseProvider>
   );
