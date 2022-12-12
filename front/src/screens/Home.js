@@ -16,13 +16,13 @@ class Home extends React.Component {
           name="cantine"
           navigate="Cantines"
           navigation={this.props.navigation}
-          logo="shield"
+          logo="food-takeout-box"
         />
         <MozaicButton
           name="Signalements"
           navigate="Signalement"
           navigation={this.props.navigation}
-          logo="shield"
+          logo="alert"
         />
       </HStack>
     )

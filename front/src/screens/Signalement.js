@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box, HStack, VStack, Text, Spacer, Pressable, Title } from "native-base";
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { HStack, VStack, Text } from "native-base";
 import MozaicButton from '../components/MozaicButton';
 class Signalement extends React.Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class Signalement extends React.Component {
     </HStack>
     <HStack flex={1} space="2" justifyContent="center" m="5">
         <MozaicButton name="Animaux" navigate="Animaux" navigation={this.props.navigation} logo="paw"/>
-        <MozaicButton name="Divers" navigate="Divers" navigation={this.props.navigation} logo="question"/>
+        <MozaicButton name="Divers" navigate="Divers" navigation={this.props.navigation} logo="help"/>
     </HStack>
     </VStack>
     

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, Pressable, Avatar, HStack, VStack, Text, Spacer, Center, Flex } from "native-base";
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Box, Pressable, Text, Center } from "native-base";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 class MozaicButton extends React.Component {
   constructor(props) {
