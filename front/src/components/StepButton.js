@@ -10,7 +10,7 @@ class StepButton extends React.Component {
   }
 
   render() {
-    let { } = this.props;
+    let { navigate, navigation} = this.props;
     return (
         <Center>
             <Pressable onPress={() => navigation.navigate(navigate)}>

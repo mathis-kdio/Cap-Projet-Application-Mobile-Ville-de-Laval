@@ -6,6 +6,7 @@ import Cantines from '../screens/Cantines'
 import Menus from '../screens/Menus'
 import Signalement from '../screens/Signalement';
 import SignalementDetails from '../screens/SignalementDetails';
+import SignalementRenseignements from '../screens/SignalementRenseignements';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ function HomeNav() {
       <Stack.Screen name="Menus" component={MenusNav} options={{headerShown: false}} />
       <Stack.Screen name="Signalement" component={SignalementNav} options={{headerShown: false}} />
       <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementRenseignements" component={SignalementRenseignementsNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -49,6 +51,14 @@ function SignalementDetailsNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementDetails' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementDetailsHome" component={SignalementDetails} options={{title: 'Signaler un problème'}}/>
+    </Stack.Navigator>
+  );
+}
+
+function SignalementRenseignementsNav() {
+  return (
+    <Stack.Navigator initialRouteName='SignalementRenseignements' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
+      <Stack.Screen name="SignalementRenseignementsHome" component={SignalementRenseignements} options={{title: 'Signaler un problème'}}/>
     </Stack.Navigator>
   );
 }
