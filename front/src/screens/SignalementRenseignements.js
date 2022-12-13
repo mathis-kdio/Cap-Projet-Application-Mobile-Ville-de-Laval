@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { HStack, VStack, Text, TextArea, Box, Icon, Center } from "native-base";
-import MozaicButton from '../components/MozaicButton';
 import StepButton from '../components/StepButton';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
