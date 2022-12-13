@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { HStack, VStack, Text, TextArea, Box, Icon, Center } from "native-base";
-import MozaicButton from '../components/MozaicButton';
 import StepButton from '../components/StepButton';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
@@ -36,7 +35,7 @@ class SignalementRenseignements extends React.Component {
                 <Entypo name="mail-with-circle"size={30} color="#C30065"></Entypo>
                 <TextArea h={10} placeholder="Email" w="80%" />
             </HStack>
-        <StepButton></StepButton>
+        <StepButton navigate="SignalementRecap" navigation={this.props.navigation}></StepButton>
       </VStack>
     )
   }

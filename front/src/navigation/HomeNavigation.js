@@ -7,6 +7,8 @@ import Menus from '../screens/Menus'
 import Signalement from '../screens/Signalement';
 import SignalementDetails from '../screens/SignalementDetails';
 import SignalementRenseignements from '../screens/SignalementRenseignements';
+import SignalementRecap from '../screens/SignalementRecap';
+import SignalementValid from '../screens/SignalementValid';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +21,8 @@ function HomeNav() {
       <Stack.Screen name="Signalement" component={SignalementNav} options={{headerShown: false}} />
       <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
       <Stack.Screen name="SignalementRenseignements" component={SignalementRenseignementsNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementRecap" component={SignalementRecapNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementValid" component={SignalementValidNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -59,6 +63,22 @@ function SignalementRenseignementsNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementRenseignements' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementRenseignementsHome" component={SignalementRenseignements} options={{title: 'Signaler un problème'}}/>
+    </Stack.Navigator>
+  );
+}
+
+function SignalementRecapNav() {
+  return (
+    <Stack.Navigator initialRouteName='SignalementRecap' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
+      <Stack.Screen name="SignalementRecapHome" component={SignalementRecap} options={{title: 'Signaler un problème'}}/>
+    </Stack.Navigator>
+  );
+}
+
+function SignalementValidNav() {
+  return (
+    <Stack.Navigator initialRouteName='SignalementValidHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
+      <Stack.Screen name="SignalementValidHome" component={SignalementValid} options={{title: 'Cantines'}}/>
     </Stack.Navigator>
   );
 }
