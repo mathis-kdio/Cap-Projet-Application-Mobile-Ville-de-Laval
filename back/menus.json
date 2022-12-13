@@ -1,0 +1,62 @@
+[
+  {
+    "id":"1",
+    "date": "12/12/22",
+    "Entree": [
+      "P. de terre jambon emmental mayonnaise",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Plat": [
+      "Aiguillettes de poulet",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Sauce": [
+      "Sauce fromagère (viande)",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Garniture": [
+      "Brocolis",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Fromage": [
+      "+ Gruyère râpé bio",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Dessert": [
+      "Clémentine",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Divers": [
+      "Pain",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ],
+    "Gouter": [
+      "Lait bio chocolaté",
+      "bio",
+      "local",
+      "viande_française",
+      "fruits"
+    ]
+  }
+]

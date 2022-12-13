@@ -1,12 +1,13 @@
-from flask import Flask,jsonify, request
+from flask import Flask, jsonify, request, json
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from decouple import config
+import os
 #test = config('BDD_NAME')
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'{config("BDD_CONNECTOR")}://{config("BDD_USERNAME")}:{config("BDD_PASSWORD")}@{config("BDD_HOSTNAME")}:{config("BDD_PORT")}/{config("BDD_NAME")}'
+'''app.config['SQLALCHEMY_DATABASE_URI'] = f'{config("BDD_CONNECTOR")}://{config("BDD_USERNAME")}:{config("BDD_PASSWORD")}@{config("BDD_HOSTNAME")}:{config("BDD_PORT")}/{config("BDD_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -74,8 +75,16 @@ def delete_friend(id):
 @app.route('/image', methods = ['GET'])
 def get_image():
     return jsonify({"ok": "ok"})
+'''
+
+@app.route('/menus', methods = ['GET'])
+def get_menus():
+    filename = os.path.join(os.path.dirname(__file__), 'menus.json')
+    with open(filename) as test_file:
+        data = json.load(test_file)
+    return jsonify(data)
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()
+        #db.create_all()
         app.run(host='0.0.0.0', port=config('APP_PORT'), debug=False)
