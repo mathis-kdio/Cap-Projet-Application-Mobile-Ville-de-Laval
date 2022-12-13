@@ -5,6 +5,7 @@ import Home from '../screens/Home'
 import Cantines from '../screens/Cantines'
 import Signalement from '../screens/Signalement';
 import SignalementDetails from '../screens/SignalementDetails';
+import SignalementRenseignements from '../screens/SignalementRenseignements';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,8 @@ function HomeNav() {
       <Stack.Screen name="Home" component={Home} options={{title: 'Laval Dans Ma Poche'}} />
       <Stack.Screen name="Cantines" component={CantinesNav} options={{headerShown: false}} />
       <Stack.Screen name="Signalement" component={SignalementNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementRenseignements" component={SignalementRenseignementsNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -30,7 +33,6 @@ function SignalementNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementHome" component={Signalement} options={{title: 'Signalement'}}/>
-      <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -39,6 +41,14 @@ function SignalementDetailsNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementDetails' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementDetailsHome" component={SignalementDetails} options={{title: 'Signaler un problème'}}/>
+    </Stack.Navigator>
+  );
+}
+
+function SignalementRenseignementsNav() {
+  return (
+    <Stack.Navigator initialRouteName='SignalementRenseignements' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
+      <Stack.Screen name="SignalementRenseignementsHome" component={SignalementRenseignements} options={{title: 'Signaler un problème'}}/>
     </Stack.Navigator>
   );
 }
