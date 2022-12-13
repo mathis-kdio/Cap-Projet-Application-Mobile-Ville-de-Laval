@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box, Pressable, Text, Center, HStack } from "native-base";
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
+import { baseFontSize } from 'native-base/lib/typescript/theme/tools';
 
 class StepButton extends React.Component {
   constructor(props) {
