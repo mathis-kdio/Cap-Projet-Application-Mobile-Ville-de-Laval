@@ -1,14 +1,34 @@
 import * as React from 'react';
-import { HStack, VStack, Text, Box, Pressable, Spacer } from "native-base";
+import { HStack, VStack, Text, Box, Pressable, Spacer, Image } from "native-base";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import StepButton from '../components/StepButton';
+import * as ImagePicker from 'expo-image-picker';
 
 class SignalementPhotos extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      image: null
     }
   }
+
+  async _pickImage() {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      this.setState({
+        image: result.assets[0].uri
+      })
+    }
+  };
 
   render() {
     return (
@@ -27,7 +47,7 @@ class SignalementPhotos extends React.Component {
         </HStack>
         <HStack>
           <Box flex={1} marginX="5" bg="#F4F5F9" rounded="md">
-            <Pressable onPress={() => console.log("add photos")}>
+            <Pressable onPress={() => this._pickImage()}>
               <HStack alignItems="center">
                 <Text color="black" fontWeight="bold">Ajouter depuis la galerie</Text>
                 <Spacer/>
@@ -38,6 +58,7 @@ class SignalementPhotos extends React.Component {
         </HStack>
         <Text fontSize="2xl" fontWeight="bold">Vos photos</Text>
         <Text>Aucune photos</Text>
+        {this.state.image && <Image source={{ uri: this.state.image }} alt="image du signalement" style={{ width: 200, height: 200 }} />}
         <StepButton></StepButton>
       </VStack>
     )
