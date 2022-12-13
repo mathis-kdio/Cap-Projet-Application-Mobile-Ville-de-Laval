@@ -64,8 +64,12 @@ class SignalementCamera extends React.Component {
     this.setState({
       previewVisible: false,
     })
-    console.log(this.state.capturedImage)
-    this.props.navigation.navigate("SignalementPhotos")
+    this.props.navigation.navigate({
+      name: "SignalementPhotos",
+      params: {
+        image: this.state.capturedImage
+      }
+    })
   }
 
   _camera() {

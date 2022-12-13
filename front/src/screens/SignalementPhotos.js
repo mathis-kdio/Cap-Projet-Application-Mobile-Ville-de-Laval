@@ -12,6 +12,16 @@ class SignalementPhotos extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.route.params && this.props.route.params.image) {
+      if (this.state.image != this.props.route.params.image.uri) {
+        this.setState({
+          image: this.props.route.params.image.uri
+        })
+      }
+    }
+  }
+
   async _pickImage() {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -20,8 +30,6 @@ class SignalementPhotos extends React.Component {
       aspect: [4, 3],
       quality: 1,
     });
-
-    console.log(result);
 
     if (!result.canceled) {
       this.setState({
@@ -32,10 +40,10 @@ class SignalementPhotos extends React.Component {
 
   render() {
     return (
-      <VStack flex={1} space={4} alignItems="center">
+      <VStack flex={1} marginX={5}>
         <Text fontSize="2xl" fontWeight="bold">Photos</Text>
         <HStack>
-          <Box flex={1} marginX="5" bg="#F4F5F9" rounded="md">
+          <Box flex={1} marginX="5" marginY="5" bg="#F4F5F9" rounded="md">
             <Pressable onPress={() => this.props.navigation.navigate("SignalementCamera")}>
               <HStack alignItems="center">
                 <Text color="black" fontWeight="bold">Prendre une photo</Text>
@@ -46,7 +54,7 @@ class SignalementPhotos extends React.Component {
           </Box>
         </HStack>
         <HStack>
-          <Box flex={1} marginX="5" bg="#F4F5F9" rounded="md">
+          <Box flex={1} marginX="5" marginY="5" bg="#F4F5F9" rounded="md">
             <Pressable onPress={() => this._pickImage()}>
               <HStack alignItems="center">
                 <Text color="black" fontWeight="bold">Ajouter depuis la galerie</Text>
