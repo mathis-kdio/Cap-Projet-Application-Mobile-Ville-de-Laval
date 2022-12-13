@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { HStack, VStack, Text, Box, Pressable, Spacer, Button } from "native-base";
-import { Camera, CameraType } from 'expo-camera';
+import { HStack, VStack, Text, Box, Pressable, Spacer } from "native-base";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import StepButton from '../components/StepButton';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 class SignalementPhotos extends React.Component {
   constructor(props) {
@@ -45,27 +43,5 @@ class SignalementPhotos extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  camera: {
-    flex: 1,
-  },
-  buttonContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end'
-  },
-  takePicureButton: {
-    width: 70,
-    height: 70,
-    bottom: 0,
-    borderRadius: 50,
-    backgroundColor: '#fff'
-  }
-});
 
 export default SignalementPhotos
