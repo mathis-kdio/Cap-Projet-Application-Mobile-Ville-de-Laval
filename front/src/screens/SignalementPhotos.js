@@ -67,7 +67,8 @@ class SignalementPhotos extends React.Component {
         <Text fontSize="2xl" fontWeight="bold">Vos photos</Text>
         <Text>Aucune photos</Text>
         {this.state.image && <Image source={{ uri: this.state.image }} alt="image du signalement" style={{ width: 200, height: 200 }} />}
-        <StepButton></StepButton>
+        <Spacer/>
+        <StepButton navigate="SignalementRenseignements" navigation={this.props.navigation}/>
       </VStack>
     )
   }

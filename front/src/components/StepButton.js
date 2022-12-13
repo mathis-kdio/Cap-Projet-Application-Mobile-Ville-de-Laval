@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, Pressable, Text, Center, HStack } from "native-base";
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
+import { Box, Pressable, Text, HStack, Spacer } from "native-base";
+import { AntDesign } from '@expo/vector-icons'; 
 
 class StepButton extends React.Component {
   constructor(props) {
@@ -12,20 +12,15 @@ class StepButton extends React.Component {
   render() {
     let { navigate, navigation} = this.props;
     return (
-        <Center>
-            <Pressable onPress={() => navigation.navigate(navigate)}>
-                <Center bg="#C30065" _text={{
-                color: "white",
-                fontWeight: "bold"
-                }} height={100} width={{
-                base: 200,
-                lg: 250
-                }}>
-                    Passer à l'étape suivante
-                    <AntDesign name="arrowright" size={50} color="white"></AntDesign>
-                </Center>
-            </Pressable>
-        </Center>
+      <Box bg="#C30065" rounded="md">
+        <Pressable onPress={() => navigation.navigate(navigate)}>
+          <HStack alignItems="center" marginX={5}>
+            <Text color="white" fontWeight="bold">Passer à l'étape suivante</Text>
+            <Spacer/>
+            <AntDesign name="arrowright" size={50} color="white"></AntDesign>
+          </HStack>
+        </Pressable>
+      </Box>
     )
   }
 }
