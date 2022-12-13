@@ -1,62 +1,610 @@
 [
   {
     "id":"1",
-    "date": "12/12/22",
-    "Entree": [
-      "P. de terre jambon emmental mayonnaise",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Plat": [
-      "Aiguillettes de poulet",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Sauce": [
-      "Sauce fromagère (viande)",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Garniture": [
-      "Brocolis",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Fromage": [
-      "+ Gruyère râpé bio",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Dessert": [
-      "Clémentine",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Divers": [
-      "Pain",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ],
-    "Gouter": [
-      "Lait bio chocolaté",
-      "bio",
-      "local",
-      "viande_française",
-      "fruits"
-    ]
+    "date": "13/12/2022",
+    "adulte": {
+      "Entree": {
+        "dejeuner": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Plat": {
+        "dejeuner": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Plat",
+          "nom": "Filet de merlu",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        }
+      },
+      "Sauce": {
+        "dejeuner": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV":{
+          "type": "Sauce",
+          "nom": "Sauce moutarde (poisson)",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Garniture": {
+        "dejeuner": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Fromage": {
+        "dejeuner": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Dessert": {
+        "dejeuner": {
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SV":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SP":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        }
+      },
+      "Divers": {
+        "dejeuner": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      }
+    },
+    "maternelle": {
+      "Entree": {
+        "dejeuner": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Plat": {
+        "dejeuner": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Plat",
+          "nom": "Filet de merlu",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        }
+      },
+      "Sauce": {
+        "dejeuner": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV":{
+          "type": "Sauce",
+          "nom": "Sauce moutarde (poisson)",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Garniture": {
+        "dejeuner": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Fromage": {
+        "dejeuner": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Dessert": {
+        "dejeuner": {
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SV":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SP":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        }
+      },
+      "Divers": {
+        "dejeuner": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Gouter": {
+        "dejeuner": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SV": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SP": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        }
+      }
+    },
+    "primaire": {
+      "Entree": {
+        "dejeuner": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Entrée",
+          "nom": "P. de terre jambon emmental mayonnaise",
+          "bio": true,
+          "local": true,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Plat": {
+        "dejeuner": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Plat",
+          "nom": "Filet de merlu",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Plat",
+          "nom": "Aiguillettes de poulet",
+          "bio": false,
+          "local": false,
+          "viande_francaise": true,
+          "fruits": false
+        }
+      },
+      "Sauce": {
+        "dejeuner": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV":{
+          "type": "Sauce",
+          "nom": "Sauce moutarde (poisson)",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Sauce",
+          "nom": "Sauce moutarde",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Garniture": {
+        "dejeuner": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Garniture",
+          "nom": "Brocolis",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Fromage": {
+        "dejeuner": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Fromage",
+          "nom": "+ Gruyère râpé bio",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Dessert": {
+        "dejeuner": {
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SV":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SP":{
+          "type": "Dessert",
+          "nom": "Clémentine",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        }
+      },
+      "Divers": {
+        "dejeuner": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SV": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        },
+        "SP": {
+          "type": "Divers",
+          "nom": "Pain",
+          "bio": false,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": false
+        }
+      },
+      "Gouter": {
+        "dejeuner": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SV": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        },
+        "SP": {
+          "type": "Goûter",
+          "nom": "Lait bio chocolaté",
+          "bio": true,
+          "local": false,
+          "viande_francaise": false,
+          "fruits": true
+        }
+      }
+    }
   }
 ]
