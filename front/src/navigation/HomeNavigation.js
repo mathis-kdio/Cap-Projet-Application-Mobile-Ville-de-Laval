@@ -5,6 +5,7 @@ import Home from '../screens/Home'
 import Cantines from '../screens/Cantines'
 import Signalement from '../screens/Signalement';
 import SignalementDetails from '../screens/SignalementDetails';
+import SignalementPhotos from '../screens/SignalementPhotos';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ function SignalementNav() {
     <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementHome" component={Signalement} options={{title: 'Signalement'}}/>
       <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementPhotos" component={SignalementPhotos} options={{title: 'Signalement - Photos'}} />
     </Stack.Navigator>
   );
 }
