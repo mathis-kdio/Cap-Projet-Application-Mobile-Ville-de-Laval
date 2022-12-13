@@ -77,12 +77,26 @@ def get_image():
     return jsonify({"ok": "ok"})
 '''
 
-@app.route('/menus', methods = ['GET'])
-def get_menus():
+@app.route('/menus/<type>/<niveau>/<repas>/<date>', methods = ['GET'])
+def get_menus(type, niveau, repas, date):
     filename = os.path.join(os.path.dirname(__file__), 'menus.json')
     with open(filename) as test_file:
         data = json.load(test_file)
-    return jsonify(data)
+    dico = {
+        '13': 'MenusScolaires',
+        '92': 'MenusCreches',
+        '59': 'MenusPortages',
+        '1': 'Adulte',
+        '2': 'Primaire ',
+        '3': 'Maternelle ',
+        '18': 'Grand',
+        '17': 'Moyen',
+        '16': 'Petit',
+        '4': 'Pad',
+        '6': 'SansSel',
+        '12': 'SansSucre'
+    }
+    return jsonify(data[dico[type]][dico[niveau]])
 
 if __name__ == "__main__":
     with app.app_context():
