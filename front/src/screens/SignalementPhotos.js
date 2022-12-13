@@ -8,6 +8,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 class SignalementPhotos extends React.Component {
   constructor(props) {
     super(props)
+    this.camera = null,
     this.state = {
       permission: true,
       type: CameraType.back
@@ -19,14 +20,14 @@ class SignalementPhotos extends React.Component {
   }
 
   async _requestPermission() {
-    let permission = await Camera.requestCameraPermissionsAsync()
+    let permission = await Camera.requestCameraPermissionsAsync();
     this.setState({permission: permission});
   }
 
-  _toggleCameraType() {
-    this.setState({
-      type: this.state.type === CameraType.back ? CameraType.front : CameraType.back
-    })
+  async _takePicture() {
+    if (this.camera) {
+      const photo = await this.camera.takePictureAsync();
+    }
   }
 
   _testpermission() {
@@ -50,11 +51,16 @@ class SignalementPhotos extends React.Component {
   _camera() {
     if (this.state.permission.granted) {
       return (
-        <Camera style={styles.camera} type={this.state.type}>
+        <Camera
+          style={styles.camera}
+          type={this.state.type}
+          ref={(ref) => this.camera = ref}
+        >
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={() => this._toggleCameraType()}>
-              <Text style={styles.text}>Flip Camera</Text>
-            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.takePicureButton}
+              onPress={() => this._takePicture()}
+            />
           </View>
         </Camera>
       )
@@ -111,20 +117,16 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    margin: 64,
-  },
-  button: {
-    flex: 1,
-    alignSelf: 'flex-end',
     alignItems: 'center',
+    justifyContent: 'flex-end'
   },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-  },
+  takePicureButton: {
+    width: 70,
+    height: 70,
+    bottom: 0,
+    borderRadius: 50,
+    backgroundColor: '#fff'
+  }
 });
 
 export default SignalementPhotos
