@@ -1,12 +1,13 @@
-from flask import Flask,jsonify, request
+from flask import Flask, jsonify, request, json
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from decouple import config
+import os
 #test = config('BDD_NAME')
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'{config("BDD_CONNECTOR")}://{config("BDD_USERNAME")}:{config("BDD_PASSWORD")}@{config("BDD_HOSTNAME")}:{config("BDD_PORT")}/{config("BDD_NAME")}'
+'''app.config['SQLALCHEMY_DATABASE_URI'] = f'{config("BDD_CONNECTOR")}://{config("BDD_USERNAME")}:{config("BDD_PASSWORD")}@{config("BDD_HOSTNAME")}:{config("BDD_PORT")}/{config("BDD_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -74,8 +75,30 @@ def delete_friend(id):
 @app.route('/image', methods = ['GET'])
 def get_image():
     return jsonify({"ok": "ok"})
+'''
+
+@app.route('/menus/<type>/<niveau>/<repas>/<date>', methods = ['GET'])
+def get_menus(type, niveau, repas, date):
+    filename = os.path.join(os.path.dirname(__file__), 'menus.json')
+    with open(filename) as test_file:
+        data = json.load(test_file)
+    dico = {
+        '13': 'MenusScolaires',
+        '92': 'MenusCreches',
+        '59': 'MenusPortages',
+        '1': 'Adulte',
+        '2': 'Primaire ',
+        '3': 'Maternelle ',
+        '18': 'Grand',
+        '17': 'Moyen',
+        '16': 'Petit',
+        '4': 'Pad',
+        '6': 'SansSel',
+        '12': 'SansSucre'
+    }
+    return jsonify(data[dico[type]][dico[niveau]])
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()
+        #db.create_all()
         app.run(host='0.0.0.0', port=config('APP_PORT'), debug=False)
