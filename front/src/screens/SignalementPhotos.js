@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { HStack, VStack, Text, Box, Pressable, Center, Spacer } from "native-base";
+import { Camera, CameraType } from 'expo-camera';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import StepButton from '../components/StepButton';
 
