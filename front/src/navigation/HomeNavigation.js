@@ -16,6 +16,7 @@ function HomeNav() {
       <Stack.Screen name="Cantines" component={CantinesNav} options={{headerShown: false}} />
       <Stack.Screen name="Menus" component={MenusNav} options={{headerShown: false}} />
       <Stack.Screen name="Signalement" component={SignalementNav} options={{headerShown: false}} />
+      <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -40,7 +41,6 @@ function SignalementNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementHome" component={Signalement} options={{title: 'Signalement'}}/>
-      <Stack.Screen name="SignalementDetails" component={SignalementDetailsNav} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
