@@ -36,7 +36,7 @@ class SignalementRenseignements extends React.Component {
                 <Entypo name="mail-with-circle"size={30} color="#C30065"></Entypo>
                 <TextArea h={10} placeholder="Email" w="80%" />
             </HStack>
-        <StepButton></StepButton>
+        <StepButton navigate="SignalementRecap" navigation={this.props.navigation}></StepButton>
       </VStack>
     )
   }
