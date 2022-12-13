@@ -62,14 +62,6 @@ function SignalementDetailsNav() {
   )
 }
 
-function MenusNav() {
-  return (
-    <Stack.Navigator initialRouteName='MenusHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
-      <Stack.Screen name="MenusHome" component={Menus} options={{title: 'Menus'}}/>
-    </Stack.Navigator>
-  );
-}
-
 function SignalementRenseignementsNav() {
   return (
     <Stack.Navigator initialRouteName='SignalementRenseignements' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
