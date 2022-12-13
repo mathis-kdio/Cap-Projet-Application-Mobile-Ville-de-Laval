@@ -24,7 +24,7 @@ class Signalement extends React.Component {
         </HStack>
         <HStack flex={1} space="2" justifyContent="center" m="5">
           <MozaicButton name="Animaux" navigate="SignalementDetails" navigation={this.props.navigation} logo="paw"/>
-          <MozaicButton name="Divers" navigate="SignalementPhotos" navigation={this.props.navigation} logo="help"/>
+          <MozaicButton name="Divers" navigate="SignalementDetails" navigation={this.props.navigation} logo="help"/>
         </HStack>
       </VStack>
     )
