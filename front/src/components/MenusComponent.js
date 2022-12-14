@@ -15,9 +15,6 @@ class MenusComponent extends React.Component {
 
   render() {
     let { convives, type_menu, menu } = this.props;
-
-    console.log(convives, type_menu, menu)
-
     return (
         <Box w="100%" mt="-3" pb="2" style={styles.menuContainer}>
         <Box mt="4" w="100%">

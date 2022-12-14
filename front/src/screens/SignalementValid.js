@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HStack, VStack, Text, TextArea, Box, Pressable, Center } from "native-base";
+import { VStack, Text, Pressable, Center } from "native-base";
 import { AntDesign} from '@expo/vector-icons'; 
 
 class SignalementValid extends React.Component {

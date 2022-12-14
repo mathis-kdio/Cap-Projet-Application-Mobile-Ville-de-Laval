@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HStack, VStack, Text, Box, Button } from "native-base";
 import { Camera, CameraType } from 'expo-camera';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import SignalementCameraPreview from './SignalementCameraPreview';
+import SignalementCameraPreview from '../components/SignalementCameraPreview';
 
 class SignalementCamera extends React.Component {
   constructor(props) {

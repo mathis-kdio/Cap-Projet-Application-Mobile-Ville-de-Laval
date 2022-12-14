@@ -1,14 +1,30 @@
 import * as React from 'react';
-import { HStack, VStack, Text, TextArea, Box, Icon, Center, Spacer } from "native-base";
+import { HStack, VStack, Text, Spacer, Input } from "native-base";
 import StepButton from '../components/StepButton';
 import { Ionicons, Entypo } from '@expo/vector-icons'; 
 
 class SignalementRenseignements extends React.Component {
   constructor(props) {
     super(props)
+    this.renseignements = {nom: "", prenom: "", adresse: "", tel: "", email: ""}
     this.state = {
-
+      btnDisabled: true
     }
+  }
+
+  _navigation() {
+    this.props.navigation.navigate({
+      name: "SignalementRecap",
+      params: {
+        details: this.props.route.params.details,
+        image: this.props.route.params.image
+      }
+    })
+  }
+
+  _textInputChanged(text, item) {
+    this.renseignements[item] = text;
+    this.setState({btnDisabled: !Object.values(this.renseignements).every(item => item.length != 0)})
   }
 
   render() {
@@ -18,27 +34,69 @@ class SignalementRenseignements extends React.Component {
         <VStack space={4}>
           <HStack space={2} alignItems="center">
             <Ionicons name="person"size={30} color="#C30065"></Ionicons>
-            <TextArea h={10} placeholder="Nom" w="80%" />
+            <Input
+              type='text'
+              keyboardType={'default'}
+              placeholder="Nom"
+              marginRight={10}
+              onChangeText={(text) => this._textInputChanged(text, 'nom')}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.prenomInput.focus()}
+            />
           </HStack>
           <HStack space={2} alignItems="center">
             <Ionicons name="person"size={30} color="#C30065"></Ionicons>
-            <TextArea h={10} placeholder="Prénom" w="80%" />
+            <Input
+              type='text'
+              keyboardType={'default'}
+              placeholder="Prénom"
+              marginRight={10}
+              onChangeText={(text) => this._textInputChanged(text, 'prenom')}
+              ref={ref => {this.prenomInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.adresseInput.focus()}
+            />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="location-pin"size={30} color="#C30065"></Entypo>
-            <TextArea h={10} placeholder="Adresse" w="80%" />
+            <Input
+              type='text'
+              keyboardType={'default'}
+              placeholder="Adresse"
+              marginRight={10}
+              onChangeText={(text) => this._textInputChanged(text, 'adresse')}
+              ref={ref => {this.adresseInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.telInput.focus()}
+            />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="phone"size={30} color="#C30065"></Entypo>
-            <TextArea h={10} placeholder="Numéro de Téléphone" w="80%" />
+            <Input
+              type='text'
+              keyboardType={'phone-pad'}
+              placeholder="Numéro de Téléphone"
+              marginRight={10}
+              onChangeText={(text) => this._textInputChanged(text, 'tel')}
+              ref={ref => {this.telInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.emailInput.focus()}
+            />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="mail-with-circle"size={30} color="#C30065"></Entypo>
-            <TextArea h={10} placeholder="Email" w="80%" />
+            <Input
+              type='text'
+              keyboardType={'email-address'}
+              placeholder="Email"
+              marginRight={10}
+              onChangeText={(text) => this._textInputChanged(text, 'email')}
+              ref={ref => {this.emailInput = ref}}
+            />
           </HStack>
         </VStack>
         <Spacer/>
-        <StepButton navigate="SignalementRecap" navigation={this.props.navigation}/>
+        <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
     )
   }
