@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment/moment';
 import * as Location from 'expo-location';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 class SignalementDateLieu extends React.Component {
   constructor(props) {
@@ -59,7 +59,6 @@ class SignalementDateLieu extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    console.log(location)
     this.setState({
       location: location
     })  
@@ -72,6 +71,12 @@ class SignalementDateLieu extends React.Component {
     }
     else if (this.state.location) {
       text = JSON.stringify(this.state.location);
+    }
+    let latitude = 48.07065
+    let longitude = -0.77354
+    if (this.state.location && this.state.location.coords) {
+      latitude = this.state.location.coords.latitude
+      longitude = this.state.location.coords.longitude
     }
     return (
       <VStack flex={1} marginX={5}>
@@ -97,7 +102,24 @@ class SignalementDateLieu extends React.Component {
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
         <Button onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
         <Text>{text}</Text>
-        <MapView style={{width: '100%', height: '100%'}}/>
+        <Box flex={1}>
+          <MapView
+            style={{width: '100%', height: '100%'}}
+            initialRegion={{
+              latitude: 48.07065,
+              longitude: -0.77354,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.015,
+            }}
+          >
+            <Marker
+              coordinate={{
+                latitude: latitude,
+                longitude: longitude,
+              }}
+            />
+          </MapView>
+        </Box>
         <Spacer/>
         <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
