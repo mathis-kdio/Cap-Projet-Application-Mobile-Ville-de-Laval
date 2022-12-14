@@ -12,7 +12,7 @@ class StepButton extends React.Component {
   render() {
     let { navigate, navigation} = this.props;
     return (
-      <Box bg="#C30065" rounded="md">
+      <Box bg="#C30065" rounded="md" marginBottom={10}>
         <Pressable onPress={() => navigation.navigate(navigate)}>
           <HStack alignItems="center" marginX={5}>
             <Text color="white" fontWeight="bold">Passer à l'étape suivante</Text>

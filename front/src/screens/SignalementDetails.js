@@ -17,7 +17,7 @@ class SignalementDetails extends React.Component {
         <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
         <TextArea h={20} placeholder="Décrivez le problème ici" w="100%"/>
         <Spacer/>
-        <StepButton navigate="SignalementPhotos" navigation={this.props.navigation}/>
+        <StepButton navigate="SignalementDateLieu" navigation={this.props.navigation}/>
       </VStack>
     )
   }

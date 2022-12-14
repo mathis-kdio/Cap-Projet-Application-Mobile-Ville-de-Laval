@@ -11,6 +11,7 @@ import SignalementRecap from '../screens/SignalementRecap';
 import SignalementValid from '../screens/SignalementValid';
 import SignalementPhotos from '../screens/SignalementPhotos';
 import SignalementCamera from '../screens/SignalementCamera';
+import SignalementDateLieu from '../screens/SignalementDateLieu';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ function SignalementNav() {
       <Stack.Screen name="SignalementRenseignements" component={SignalementRenseignements} options={{title: 'Signaler un problème'}}/>
       <Stack.Screen name="SignalementRecap" component={SignalementRecap} options={{title: 'Signaler un problème'}}/>
       <Stack.Screen name="SignalementValid" component={SignalementValid} options={{title: 'Signaler un problème'}}/>
+      <Stack.Screen name="SignalementDateLieu" component={SignalementDateLieu} options={{title: 'Signaler un problème'}}/>
     </Stack.Navigator>
   );
 }
