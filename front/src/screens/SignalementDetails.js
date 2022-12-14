@@ -31,6 +31,7 @@ class SignalementDetails extends React.Component {
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={{ flex: 1}}
+        enabled
       >
         <VStack flex={1} marginX={5}>
           <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
