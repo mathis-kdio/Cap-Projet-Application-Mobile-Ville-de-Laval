@@ -47,6 +47,7 @@ class Menus extends React.Component {
           mode="date"
           minimumDate={new Date(2021, 12, 13)}
           textColor="white"
+          themeVariant="light"
           style={styles.datePicker}
           onChange={(event, date) => {this._onChange(date);}}
         />
