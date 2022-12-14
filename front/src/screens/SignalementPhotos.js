@@ -9,13 +9,24 @@ class SignalementPhotos extends React.Component {
     super(props)
     this.state = {
       btnDisabled: true,
+      details: "",
       image: null
     }
   }
 
+  componentDidMount() {
+    if (this.props.route.params) {
+      if (this.props.route.params.details) {
+        this.setState({
+          details: this.props.route.params.details
+        })
+      }
+    }
+  }
+
   componentDidUpdate() {
-    if (this.props.route.params && this.props.route.params.image) {
-      if (this.state.image != this.props.route.params.image.uri) {
+    if (this.props.route.params) {
+      if (this.props.route.params.image && this.state.image != this.props.route.params.image.uri) {
         this.setState({
           image: this.props.route.params.image.uri,
           btnDisabled: false
@@ -28,7 +39,7 @@ class SignalementPhotos extends React.Component {
     this.props.navigation.navigate({
       name: "SignalementRenseignements",
       params: {
-        details: this.props.route.params.details,
+        details: this.state.details,
         image: this.state.image
       }
     })
