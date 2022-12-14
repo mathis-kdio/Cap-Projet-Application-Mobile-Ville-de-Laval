@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from 'react-native'
-import { Button, Text, Pressable, Box, Select} from "native-base";
+import { Button, Text, Pressable, Box, Select, HStack} from "native-base";
 import {Entypo, Ionicons} from '@expo/vector-icons';
 import MenusData from '../assets/MenusData.json';
 import MenusComponent from '../components/MenusComponent';
@@ -39,14 +39,29 @@ class Menus extends React.Component {
     this._loadMenu();
   };
 
+  _dateTimePicker() {
+    if (this.state.showDatePicker || Platform.OS === 'ios') {
+      return (
+        <DateTimePicker
+          value={this.state.date}
+          mode="date"
+          minimumDate={new Date(2021, 12, 13)}
+          textColor="white"
+          style={styles.datePicker}
+          onChange={(event, date) => {this._onChange(date);}}
+        />
+      )
+    }
+  }
+
   render() {
     return (
       <Box style={styles.container}>
         <Box mx="4" my="6">
-          <Flex direction="row">
+          <HStack direction="row">
             <Pressable onPress={() => this.props.navigation.navigate("Cantines")}><Ionicons name="chevron-back" size={30} color="black"/></Pressable>
             <Text style={styles.title} pt="2">Convives</Text>
-          </Flex>
+          </HStack>
           <Box mt="2" style={styles.selectContainer}>
             <Select value={this.state.convives} defaultValue="adulte" style={styles.select} minWidth="200" accessibilityLabel="Convives" placeholder="Convives" mt="1" onValueChange={itemValue => {this.setState({convives: itemValue})}}>
               <Select.Item label="Adulte" value="adulte" />
@@ -75,18 +90,14 @@ class Menus extends React.Component {
             <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
               <Entypo name="chevron-left" size={30} color="white"/>
             </Pressable>
-            <Pressable onPress={() => this.setState({showDatePicker: true})}>
-              <Text color="white" fontSize="lg">{moment(this.state.date).format('D/MM/YYYY')}</Text>
-            </Pressable>
-            {this.state.showDatePicker &&
-              <DateTimePicker
-                value={this.state.date}
-                mode="date"
-                minimumDate={new Date(2021, 12, 13)}
-                style={styles.datePicker}
-                onChange={(event, date) => {this._onChange(date);}}
-              />
-            }
+            <Box>
+              {Platform.OS === 'android' &&
+                <Pressable onPress={() => this.setState({showDatePicker: true})}>
+                  <Text color="white" fontSize="lg">{moment(this.state.date).format('D/MM/YYYY')}</Text>
+                </Pressable>
+              }
+              {this._dateTimePicker()}
+            </Box>
             <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}>
               <Entypo name="chevron-right" size={30} color="white"/>
             </Pressable>
