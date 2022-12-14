@@ -29,9 +29,9 @@ class SignalementDetails extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={0}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1}}
+        keyboardVerticalOffset={64}
+        behavior={Platform.OS === "ios" ? "position" : undefined}
+        style={{flex: 1}}
         enabled
       >
         <VStack flex={1} marginX={5} alignContent="space-around" justifyContent="space-between">
