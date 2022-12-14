@@ -39,12 +39,12 @@ function SignalementNav() {
     <Stack.Navigator initialRouteName='SignalementHome' screenOptions={{headerTitleAlign: 'center', headerStyle: {backgroundColor: '#C30065'}, headerTitleStyle: {color: '#ffffff'}}}>
       <Stack.Screen name="SignalementHome" component={Signalement} options={{title: 'Signalement'}}/>
       <Stack.Screen name="SignalementDetails" component={SignalementDetails} options={{title: 'Signaler un problème'}}/>
+      <Stack.Screen name="SignalementDateLieu" component={SignalementDateLieu} options={{title: 'Signaler un problème'}}/>
       <Stack.Screen name="SignalementPhotos" component={SignalementPhotos} options={{title: 'Signalement - Photos'}} />
       <Stack.Screen name="SignalementCamera" component={SignalementCamera} options={{title: 'Signalement - Camera'}} />
       <Stack.Screen name="SignalementRenseignements" component={SignalementRenseignements} options={{title: 'Signaler un problème'}}/>
       <Stack.Screen name="SignalementRecap" component={SignalementRecap} options={{title: 'Signaler un problème'}}/>
       <Stack.Screen name="SignalementValid" component={SignalementValid} options={{title: 'Signaler un problème'}}/>
-      <Stack.Screen name="SignalementDateLieu" component={SignalementDateLieu} options={{title: 'Signaler un problème'}}/>
     </Stack.Navigator>
   );
 }

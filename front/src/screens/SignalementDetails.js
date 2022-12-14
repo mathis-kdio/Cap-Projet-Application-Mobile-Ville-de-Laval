@@ -13,7 +13,7 @@ class SignalementDetails extends React.Component {
 
   _navigation() {
     this.props.navigation.navigate({
-      name: "SignalementPhotos",
+      name: "SignalementDateLieu",
       params: {
         details: this.details
       }
