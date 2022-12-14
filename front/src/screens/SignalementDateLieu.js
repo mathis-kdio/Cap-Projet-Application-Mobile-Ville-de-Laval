@@ -16,34 +16,53 @@ class SignalementDateLieu extends React.Component {
     }
   }
 
-  render() {
-    const onChange = (event, selectedDate) => {
-        this.setState({date: new Date(selectedDate)}, () => {})
-      };
+  _dateTimePicker() {
+    if (this.state.showDatePicker || Platform.OS === 'ios') {
+      return (
+        <DateTimePicker
+          value={this.state.date}
+          mode="date"
+          minimumDate={new Date(2021, 12, 13)}
+          textColor="white"
+          themeVariant="light"
+          onChange={(event, date) => {this._onChange(date);}}
+        />
+      )
+    }
+  }
 
+  _onChange(selectedDate) {
+    this.setState({
+      date: new Date(selectedDate),
+      showDatePicker: false
+    })
+  };
+
+  render() {
     return (
         <VStack flex={1} marginX={5}>
             <Text fontSize="2xl" fontWeight="bold">Date</Text>
-            <Box bg="#C30065" rounded="md" marginTop={5} alignItems="center">
-                <HStack alignItems="center">
-                  <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
+            <Box  bg="#C30065" rounded="md" marginTop={5} alignItems="center">
+              <HStack>
+                <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
                   <Entypo name="chevron-left" size={30} color="white"/>
-                  </Pressable>
-                  <DateTimePicker
-                      value={this.state.date}
-                      mode="date"
-                      textColor='white'
-                      minimumDate={new Date()}
-                      onChange={(event, date) => {
-                          onChange(null, date);
-                      }}
-                  />
-                  <Pressable onPress={() => onChange(null, new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={30} color="white"/></Pressable>
-                </HStack>
+                </Pressable>
+                <Box>
+                  {Platform.OS === 'android' &&
+                    <Pressable onPress={() => this.setState({showDatePicker: true})}>
+                      <Text color="white" fontSize="lg">{moment(this.state.date).format('D/MM/YYYY')}</Text>
+                    </Pressable>
+                  }
+                  {this._dateTimePicker()}
+                </Box>
+                <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}>
+                  <Entypo name="chevron-right" size={30} color="white"/>
+                </Pressable>
+              </HStack>
             </Box>
             <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
             <Spacer/>
-            <StepButton navigate="SignalementPhoto" navigation={this.props.navigation}/>
+            <StepButton navigate="SignalementPhotos" navigation={this.props.navigation}/>
         </VStack>
         
     )
