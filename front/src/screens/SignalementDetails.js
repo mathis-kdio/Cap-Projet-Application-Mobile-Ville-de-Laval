@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VStack, Text, TextArea, Spacer } from "native-base";
+import { VStack, Text, TextArea, Spacer, Box } from "native-base";
 import StepButton from '../components/StepButton';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 
@@ -29,19 +29,21 @@ class SignalementDetails extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView
+        keyboardVerticalOffset={0}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={{ flex: 1}}
         enabled
       >
-        <VStack flex={1} marginX={5}>
-          <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
-          <TextArea 
-            h={20}
-            placeholder="Décrivez le problème ici"
-            w="100%"
-            onChangeText={(text) => this._textAreaChanged(text)}
-          />
-          <Spacer/>
+        <VStack flex={1} marginX={5} alignContent="space-around" justifyContent="space-between">
+          <Box>
+            <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
+            <TextArea 
+              h={20}
+              placeholder="Décrivez le problème ici"
+              w="100%"
+              onChangeText={(text) => this._textAreaChanged(text)}
+            />
+          </Box>
           <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
         </VStack>
       </KeyboardAvoidingView>
