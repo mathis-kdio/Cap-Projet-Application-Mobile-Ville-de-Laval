@@ -1,11 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 import { StyleSheet, View } from 'react-native'
-import { Button, Text, Pressable, Center, Box, NativeBaseProvider, Flex, Select, VStack, Image, Divider} from "native-base";
+import { Button, Text, Pressable, Box, Select} from "native-base";
 import {Entypo, Ionicons} from '@expo/vector-icons';
 import MenusData from '../assets/MenusData.json';
 import MenusComponent from '../components/MenusComponent';
-
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from "moment/moment";
 
