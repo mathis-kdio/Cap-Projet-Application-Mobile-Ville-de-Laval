@@ -36,45 +36,62 @@ class SignalementRenseignements extends React.Component {
             <Ionicons name="person"size={30} color="#C30065"></Ionicons>
             <Input
               type='text'
+              keyboardType={'default'}
               placeholder="Nom"
               marginRight={10}
               onChangeText={(text) => this._textInputChanged(text, 'nom')}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.prenomInput.focus()}
             />
           </HStack>
           <HStack space={2} alignItems="center">
             <Ionicons name="person"size={30} color="#C30065"></Ionicons>
             <Input
               type='text'
+              keyboardType={'default'}
               placeholder="Prénom"
               marginRight={10}
               onChangeText={(text) => this._textInputChanged(text, 'prenom')}
+              ref={ref => {this.prenomInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.adresseInput.focus()}
             />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="location-pin"size={30} color="#C30065"></Entypo>
             <Input
               type='text'
+              keyboardType={'default'}
               placeholder="Adresse"
               marginRight={10}
               onChangeText={(text) => this._textInputChanged(text, 'adresse')}
+              ref={ref => {this.adresseInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.telInput.focus()}
             />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="phone"size={30} color="#C30065"></Entypo>
             <Input
               type='text'
+              keyboardType={'phone-pad'}
               placeholder="Numéro de Téléphone"
               marginRight={10}
               onChangeText={(text) => this._textInputChanged(text, 'tel')}
+              ref={ref => {this.telInput = ref}}
+              returnKeyType={'next'}
+              onSubmitEditing={() => this.emailInput.focus()}
             />
           </HStack>
           <HStack space={2} alignItems="center">
             <Entypo name="mail-with-circle"size={30} color="#C30065"></Entypo>
             <Input
               type='text'
+              keyboardType={'email-address'}
               placeholder="Email"
               marginRight={10}
               onChangeText={(text) => this._textInputChanged(text, 'email')}
+              ref={ref => {this.emailInput = ref}}
             />
           </HStack>
         </VStack>
