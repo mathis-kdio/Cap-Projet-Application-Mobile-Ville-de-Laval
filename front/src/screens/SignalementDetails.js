@@ -29,7 +29,7 @@ class SignalementDetails extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={64}
+        //keyboardVerticalOffset={64}
         behavior={Platform.OS === "ios" ? "position" : undefined}
         style={{flex: 1}}
         enabled
