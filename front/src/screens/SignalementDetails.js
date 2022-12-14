@@ -32,12 +32,12 @@ class SignalementDetails extends React.Component {
         <VStack flex={1} marginX={5}>
           <Box>
             <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
-              <TextArea
-                h={20}
-                placeholder="Décrivez le problème ici"
-                w="100%"
-                onChangeText={(text) => this._textAreaChanged(text)}
-              />
+            <TextArea
+              h={20}
+              placeholder="Décrivez le problème ici"
+              w="100%"
+              onChangeText={(text) => this._textAreaChanged(text)}
+            />
           </Box>
           <Spacer/>
           <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
