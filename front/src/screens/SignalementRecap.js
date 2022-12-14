@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HStack, VStack, Text, TextArea, Box, Center, Pressable } from "native-base";
+import { VStack, Text, Center, Pressable, Image } from "native-base";
 import {AntDesign } from '@expo/vector-icons'; 
 
 class SignalementRecap extends React.Component {
@@ -19,7 +19,7 @@ class SignalementRecap extends React.Component {
         <Text fontWeight="bold">Date :</Text>
         <Text fontWeight="bold">Lieu :</Text>
         <Text fontWeight="bold">Vos photos :</Text>
-        <Image 
+        <Image
           source={{ uri: this.props.route.params.image }}
           alt="Récap image"
           style={{ width: 200, height: 200 }}
