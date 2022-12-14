@@ -28,13 +28,12 @@ class SignalementDetails extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1}}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={{flex: 1}}
-          enabled
-        >
-          <VStack flex={1} marginX={5} justifyContent="space-between">
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={{flex: 1}}
+      >
+        <SafeAreaView style={styles.container}>
+          <VStack flex={1} marginX={5}>
             <Box>
               <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
               <TextArea 
@@ -44,17 +43,18 @@ class SignalementDetails extends React.Component {
                 onChangeText={(text) => this._textAreaChanged(text)}
               />
             </Box>
+            <Spacer/>
             <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
           </VStack>
-        </KeyboardAvoidingView>
-      </SafeAreaView>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1
+    flex: 1
   }
 })
 
