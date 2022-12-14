@@ -53,7 +53,7 @@ class SignalementDateLieu extends React.Component {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
       this.setState({
-        errorMsg: 'Permission to access location was denied'
+        errorMsg: "L'autorisation d'accéder à l'emplacement a été refusée"
       })  
       return;
     }
