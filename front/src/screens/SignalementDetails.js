@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VStack, Text, TextArea, Spacer } from "native-base";
 import StepButton from '../components/StepButton';
-import { KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 class SignalementDetails extends React.Component {
   constructor(props) {
@@ -29,8 +29,8 @@ class SignalementDetails extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        flex={1}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={{ flex: 1}}
       >
         <VStack flex={1} marginX={5}>
           <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
@@ -47,5 +47,11 @@ class SignalementDetails extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    //flex: 1
+  }
+})
 
 export default SignalementDetails
