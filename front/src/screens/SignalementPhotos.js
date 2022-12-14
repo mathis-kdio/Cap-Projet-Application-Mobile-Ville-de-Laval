@@ -8,18 +8,41 @@ class SignalementPhotos extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      btnDisabled: true,
+      details: "",
       image: null
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.route.params && this.props.route.params.image) {
-      if (this.state.image != this.props.route.params.image.uri) {
+  componentDidMount() {
+    if (this.props.route.params) {
+      if (this.props.route.params.details) {
         this.setState({
-          image: this.props.route.params.image.uri
+          details: this.props.route.params.details
         })
       }
     }
+  }
+
+  componentDidUpdate() {
+    if (this.props.route.params) {
+      if (this.props.route.params.image && this.state.image != this.props.route.params.image.uri) {
+        this.setState({
+          image: this.props.route.params.image.uri,
+          btnDisabled: false
+        })
+      }
+    }
+  }
+
+  _navigation() {
+    this.props.navigation.navigate({
+      name: "SignalementRenseignements",
+      params: {
+        details: this.state.details,
+        image: this.state.image
+      }
+    })
   }
 
   async _pickImage() {
@@ -33,7 +56,8 @@ class SignalementPhotos extends React.Component {
 
     if (!result.canceled) {
       this.setState({
-        image: result.assets[0].uri
+        image: result.assets[0].uri,
+        btnDisabled: false
       })
     }
   };
@@ -68,7 +92,7 @@ class SignalementPhotos extends React.Component {
         <Text>Aucune photos</Text>
         {this.state.image && <Image source={{ uri: this.state.image }} alt="image du signalement" style={{ width: 200, height: 200 }} />}
         <Spacer/>
-        <StepButton navigate="SignalementRenseignements" navigation={this.props.navigation}/>
+        <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
     )
   }
