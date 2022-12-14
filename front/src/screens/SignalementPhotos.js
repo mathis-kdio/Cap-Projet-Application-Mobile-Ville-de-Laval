@@ -8,6 +8,7 @@ class SignalementPhotos extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      btnDisabled: true,
       image: null
     }
   }
@@ -16,7 +17,8 @@ class SignalementPhotos extends React.Component {
     if (this.props.route.params && this.props.route.params.image) {
       if (this.state.image != this.props.route.params.image.uri) {
         this.setState({
-          image: this.props.route.params.image.uri
+          image: this.props.route.params.image.uri,
+          btnDisabled: false
         })
       }
     }
@@ -43,7 +45,8 @@ class SignalementPhotos extends React.Component {
 
     if (!result.canceled) {
       this.setState({
-        image: result.assets[0].uri
+        image: result.assets[0].uri,
+        btnDisabled: false
       })
     }
   };
@@ -78,7 +81,7 @@ class SignalementPhotos extends React.Component {
         <Text>Aucune photos</Text>
         {this.state.image && <Image source={{ uri: this.state.image }} alt="image du signalement" style={{ width: 200, height: 200 }} />}
         <Spacer/>
-        <StepButton _navigation={() => this._navigation()}/>
+        <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
     )
   }
