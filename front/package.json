@@ -7,7 +7,8 @@
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "web": "npx expo start --web",
-    "build android": "eas build --platform android"
+    "build android .aab": "eas build -p android",
+    "build android .apk": "eas build -p android --profile development"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "6.5.2",
