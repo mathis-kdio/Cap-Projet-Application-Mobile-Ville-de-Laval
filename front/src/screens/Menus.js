@@ -21,12 +21,17 @@ class Menus extends React.Component {
   }
 
   componentDidMount() {
+    this._loadMenu();
+  }
+
+  _loadMenu() {
+    console.log(this.state.date.toLocaleDateString("fr-FR"))
     let menu = MenusData.find(obj => {
-      if (obj.date == this.state.date.toLocaleDateString("fr"))
+      if (obj.date == this.state.date.toLocaleDateString("fr-FR"))
         return obj;
     })
     this.setState({current_menu: menu});
-  }
+  };
 
   _onChange(selectedDate) {
     this.setState({
@@ -34,14 +39,6 @@ class Menus extends React.Component {
       date: new Date(selectedDate)
     })
     this._loadMenu();
-  };
-
-  _loadMenu() {
-    let menu = MenusData.find(obj => {
-      if (obj.date == this.state.date.toLocaleDateString("fr"))
-        return obj;
-    })
-    this.setState({current_menu: menu})
   };
 
   render() {
@@ -77,13 +74,15 @@ class Menus extends React.Component {
                  </View>
              </Box>
              <Box style={styles.dateContainer}>
-              <DateTimePicker
-                value={this.state.date}
-                mode="date"
-                minimumDate={new Date()}
-                style={styles.datePicker}
-                onChange={(event, date) => {this._onChange(date);}}
-              />
+              {this.state.showDatePicker &&
+                <DateTimePicker
+                  value={this.state.date}
+                  mode="date"
+                  minimumDate={new Date(2021, 12, 13)}
+                  style={styles.datePicker}
+                  onChange={(event, date) => {this._onChange(date);}}
+                />
+              }
               <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={30} color="black"/></Pressable>
              </Box>
              <MenusComponent convives={this.state.convives} type_menu={this.state.type_menu} menu={this.state.current_menu}/>
