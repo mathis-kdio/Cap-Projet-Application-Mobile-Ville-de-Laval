@@ -7,7 +7,7 @@ class SignalementDetails extends React.Component {
     super(props)
     this.details = ""
     this.state = {
-
+      btnDisabled: true
     }
   }
 
@@ -22,6 +22,7 @@ class SignalementDetails extends React.Component {
 
   _textAreaChanged(text) {
     this.details = text;
+    this.setState({btnDisabled: text.length == 0})
   }
 
   render() {
@@ -35,7 +36,7 @@ class SignalementDetails extends React.Component {
           onChangeText={(text) => this._textAreaChanged(text)}
         />
         <Spacer/>
-        <StepButton _navigation={() => this._navigation()}/>
+        <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
     )
   }
