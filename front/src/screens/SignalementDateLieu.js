@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { HStack, VStack, Text, Box, Spacer, Pressable } from "native-base";
+import { HStack, VStack, Text, Box, Spacer, Pressable, Button } from "native-base";
 import StepButton from '../components/StepButton';
 import { Entypo } from '@expo/vector-icons'; 
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment/moment';
+import * as Location from 'expo-location';
+import MapView, { Marker } from 'react-native-maps';
 
 class SignalementDateLieu extends React.Component {
   constructor(props) {
     super(props)
+    this.mapRef = null;
     this.state = {
       date: new Date(),
-      btnDisabled: false
+      btnDisabled: false,
+      location: undefined,
+      regionName: undefined,
+      errorMsg: ""
     }
   }
 
@@ -45,11 +51,51 @@ class SignalementDateLieu extends React.Component {
     })
   };
 
+  async _requestPermissionLocation() {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      this.setState({
+        errorMsg: "L'autorisation d'accéder à l'emplacement a été refusée"
+      })  
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    let { longitude, latitude} = location.coords;
+    let regionName = await Location.reverseGeocodeAsync({longitude, latitude});
+    this.setState({
+      location: location,
+      regionName: regionName[0]
+    })
+    this.mapRef.animateToRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+      },
+      3 * 1000
+    );
+  }
+
   render() {
+    let text = 'En attente de la localisation..';
+    if (this.state.errorMsg) {
+      text = this.state.errorMsg;
+    }
+    else if (this.state.regionName) {
+      let rn = this.state.regionName;
+      text = ''.concat(rn.name, ' ', rn.street, ' ', rn.postalCode, ' ', rn.city);
+    }
+    let latitude = 48.07065
+    let longitude = -0.77354
+    if (this.state.location && this.state.location.coords) {
+      latitude = this.state.location.coords.latitude
+      longitude = this.state.location.coords.longitude
+    }
     return (
       <VStack flex={1} marginX={5}>
         <Text fontSize="2xl" fontWeight="bold">Date</Text>
-        <Box  bg="#C30065" rounded="md" marginTop={5} alignItems="center">
+        <Box bg="#C30065" rounded="md" marginTop={5} alignItems="center">
           <HStack>
             <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
               <Entypo name="chevron-left" size={30} color="white"/>
@@ -68,8 +114,27 @@ class SignalementDateLieu extends React.Component {
           </HStack>
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
-        
-
+        <Button bg="#C30065" onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
+        <Text alignSelf="center" fontSize="lg">{text}</Text>
+        <Box flex={1}>
+          <MapView
+            ref={(ref) => this.mapRef = ref}
+            style={{width: '100%', height: '100%'}}
+            initialRegion={{
+              latitude: 48.07065,
+              longitude: -0.77354,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.015,
+            }}
+          >
+            <Marker
+              coordinate={{
+                latitude: latitude,
+                longitude: longitude
+              }}
+            />
+          </MapView>
+        </Box>
         <Spacer/>
         <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
