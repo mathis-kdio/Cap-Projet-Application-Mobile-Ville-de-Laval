@@ -15,33 +15,36 @@ class Menus extends React.Component {
       convives: 'adulte',
       type_menu: "dejeuner",
       date: new Date(),
+      showDatePicker: false,
       current_menu: {}
     }
   }
 
   componentDidMount() {
-    var menu = MenusData.find(obj => {
-      if(obj.date == this.state.date.toLocaleDateString("fr"))
+    let menu = MenusData.find(obj => {
+      if (obj.date == this.state.date.toLocaleDateString("fr"))
+        return obj;
+    })
+    this.setState({current_menu: menu});
+  }
+
+  _onChange(selectedDate) {
+    this.setState({
+      showDatePicker: !this.state.showDatePicker,
+      date: new Date(selectedDate)
+    })
+    this._loadMenu();
+  };
+
+  _loadMenu() {
+    let menu = MenusData.find(obj => {
+      if (obj.date == this.state.date.toLocaleDateString("fr"))
         return obj;
     })
     this.setState({current_menu: menu})
-  }
+  };
 
   render() {
-    const onChange = (event, selectedDate) => {
-      this.setState({date: new Date(selectedDate)}, () => {
-        loadMenu();
-      })
-    };
-
-    const loadMenu = () => {
-      var menu = MenusData.find(obj => {
-        if(obj.date == this.state.date.toLocaleDateString("fr"))
-          return obj;
-      })
-      this.setState({current_menu: menu})
-    };
-
     return (
       <View style={styles.container}>
         <Box mx="4" my="6">
@@ -50,11 +53,11 @@ class Menus extends React.Component {
               <Text style={styles.title} pt="2">Convives</Text>
             </Flex>
             <Box mt="2" style={styles.selectContainer}>
-                <Select value={this.state.convives} defaultValue="adulte" style={styles.select} minWidth="200" accessibilityLabel="Convives" placeholder="Convives" mt="1" onValueChange={itemValue => {this.setState({convives: itemValue})}}>
-                  <Select.Item label="Adulte" value="adulte" />
-                  <Select.Item label="Maternelle" value="maternelle" />
-                  <Select.Item label="Primaire" value="primaire" />
-                </Select>
+              <Select value={this.state.convives} defaultValue="adulte" style={styles.select} minWidth="200" accessibilityLabel="Convives" placeholder="Convives" mt="1" onValueChange={itemValue => {this.setState({convives: itemValue})}}>
+                <Select.Item label="Adulte" value="adulte" />
+                <Select.Item label="Maternelle" value="maternelle" />
+                <Select.Item label="Primaire" value="primaire" />
+              </Select>
              </Box>
              <Box my="3" style={styles.btnContainer}>
                  <View>
@@ -75,15 +78,13 @@ class Menus extends React.Component {
              </Box>
              <Box style={styles.dateContainer}>
               <DateTimePicker
-                    value={this.state.date}
-                    mode="date"
-                    minimumDate={new Date()}
-                    style={styles.datePicker}
-                    onChange={(event, date) => {
-                      onChange(null, date);
-                    }}
-                />
-              <Pressable onPress={() => onChange(null, new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={30} color="black"/></Pressable>
+                value={this.state.date}
+                mode="date"
+                minimumDate={new Date()}
+                style={styles.datePicker}
+                onChange={(event, date) => {this._onChange(date);}}
+              />
+              <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={30} color="black"/></Pressable>
              </Box>
              <MenusComponent convives={this.state.convives} type_menu={this.state.type_menu} menu={this.state.current_menu}/>
         </Box>
