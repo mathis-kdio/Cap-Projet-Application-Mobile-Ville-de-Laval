@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VStack, Text, TextArea, Spacer, Box } from "native-base";
 import StepButton from '../components/StepButton';
-import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 
 class SignalementDetails extends React.Component {
   constructor(props) {
@@ -28,14 +28,13 @@ class SignalementDetails extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView
-        //keyboardVerticalOffset={64}
-        behavior={Platform.OS === "ios" ? "position" : undefined}
-        style={{flex: 1}}
-        enabled
-      >
-        <VStack flex={1} marginX={5} alignContent="space-around" justifyContent="space-between">
-          <Box>
+      <SafeAreaView style={{ flex: 1}}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "position" : undefined}
+          style={{flex: 1}}
+          enabled
+        >
+          <VStack flex={1} marginX={5}>
             <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
             <TextArea 
               h={20}
@@ -43,10 +42,11 @@ class SignalementDetails extends React.Component {
               w="100%"
               onChangeText={(text) => this._textAreaChanged(text)}
             />
-          </Box>
-          <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
-        </VStack>
-      </KeyboardAvoidingView>
+            <Spacer/>
+            <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
+          </VStack>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     )
   }
 }
