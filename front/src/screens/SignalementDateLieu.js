@@ -10,10 +10,12 @@ import MapView, { Marker } from 'react-native-maps';
 class SignalementDateLieu extends React.Component {
   constructor(props) {
     super(props)
+    this.mapRef = null;
     this.state = {
       date: new Date(),
       btnDisabled: false,
       location: undefined,
+      regionName: undefined,
       errorMsg: ""
     }
   }
@@ -59,9 +61,20 @@ class SignalementDateLieu extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
+    let { longitude, latitude} = location.coords;
+    let regionName = await Location.reverseGeocodeAsync({longitude, latitude});
     this.setState({
-      location: location
-    })  
+      location: location,
+      regionName: regionName[0]
+    })
+    this.mapRef.animateToRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+      },
+      3 * 1000
+    );
   }
 
   render() {
@@ -69,8 +82,9 @@ class SignalementDateLieu extends React.Component {
     if (this.state.errorMsg) {
       text = this.state.errorMsg;
     }
-    else if (this.state.location) {
-      text = JSON.stringify(this.state.location);
+    else if (this.state.regionName) {
+      let rn = this.state.regionName;
+      text = ''.concat(rn.name, ' ', rn.street, ' ', rn.postalCode, ' ', rn.city);
     }
     let latitude = 48.07065
     let longitude = -0.77354
@@ -100,10 +114,11 @@ class SignalementDateLieu extends React.Component {
           </HStack>
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
-        <Button onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
-        <Text>{text}</Text>
+        <Button bg="#C30065" onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
+        <Text alignSelf="center" fontSize="lg">{text}</Text>
         <Box flex={1}>
           <MapView
+            ref={(ref) => this.mapRef = ref}
             style={{width: '100%', height: '100%'}}
             initialRegion={{
               latitude: 48.07065,
@@ -115,7 +130,7 @@ class SignalementDateLieu extends React.Component {
             <Marker
               coordinate={{
                 latitude: latitude,
-                longitude: longitude,
+                longitude: longitude
               }}
             />
           </MapView>
