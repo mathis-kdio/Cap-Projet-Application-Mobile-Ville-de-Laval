@@ -76,7 +76,7 @@ class SignalementDateLieu extends React.Component {
     return (
       <VStack flex={1} marginX={5}>
         <Text fontSize="2xl" fontWeight="bold">Date</Text>
-        <Box  bg="#C30065" rounded="md" marginTop={5} alignItems="center">
+        <Box bg="#C30065" rounded="md" marginTop={5} alignItems="center">
           <HStack>
             <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
               <Entypo name="chevron-left" size={30} color="white"/>
