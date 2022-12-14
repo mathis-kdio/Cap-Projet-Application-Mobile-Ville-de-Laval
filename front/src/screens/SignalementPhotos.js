@@ -22,6 +22,15 @@ class SignalementPhotos extends React.Component {
     }
   }
 
+  _navigation() {
+    this.props.navigation.navigate({
+      name: "SignalementRenseignements",
+      params: {
+        details: this.details
+      }
+    })
+  }
+
   async _pickImage() {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -68,7 +77,7 @@ class SignalementPhotos extends React.Component {
         <Text>Aucune photos</Text>
         {this.state.image && <Image source={{ uri: this.state.image }} alt="image du signalement" style={{ width: 200, height: 200 }} />}
         <Spacer/>
-        <StepButton navigate="SignalementRenseignements" navigation={this.props.navigation}/>
+        <StepButton _navigation={() => this._navigation()}/>
       </VStack>
     )
   }

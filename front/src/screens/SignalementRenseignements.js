@@ -11,6 +11,15 @@ class SignalementRenseignements extends React.Component {
     }
   }
 
+  _navigation() {
+    this.props.navigation.navigate({
+      name: "SignalementRecap",
+      params: {
+        details: this.details
+      }
+    })
+  }
+
   render() {
     return (
       <VStack flex={1} marginX={5}>
@@ -38,7 +47,7 @@ class SignalementRenseignements extends React.Component {
           </HStack>
         </VStack>
         <Spacer/>
-        <StepButton navigate="SignalementRecap" navigation={this.props.navigation}/>
+        <StepButton _navigation={() => this._navigation()}/>
       </VStack>
     )
   }
