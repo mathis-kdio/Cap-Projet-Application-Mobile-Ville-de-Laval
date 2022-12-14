@@ -26,7 +26,8 @@ class SignalementPhotos extends React.Component {
     this.props.navigation.navigate({
       name: "SignalementRenseignements",
       params: {
-        details: this.details
+        details: this.props.route.params.details,
+        image: this.state.image
       }
     })
   }

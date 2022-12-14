@@ -14,10 +14,16 @@ class SignalementRecap extends React.Component {
     return (
       <VStack flex={1} space={4} alignItems="center">
         <Text fontSize="2xl" fontWeight="bold">Récapitulatif</Text>
-        <TextArea h={20} placeholder="Récap du pb" w="90%" />
+        <Text fontWeight="bold">Votre problème :</Text>
+        <Text >{this.props.route.params.details}</Text>
         <Text fontWeight="bold">Date :</Text>
         <Text fontWeight="bold">Lieu :</Text>
         <Text fontWeight="bold">Vos photos :</Text>
+        <Image 
+          source={{ uri: this.props.route.params.image }}
+          alt="Récap image"
+          style={{ width: 200, height: 200 }}
+        />
         <Center>
           <Pressable onPress={() => this.props.navigation.navigate("SignalementValid")}>
             <Center bg="#C30065" _text={{
