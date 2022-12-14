@@ -40,7 +40,7 @@ class SignalementDateLieu extends React.Component {
             </Box>
             <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
             <Spacer/>
-            <StepButton navigate="SignalementDateLieu" navigation={this.props.navigation}/>
+            <StepButton navigate="SignalementPhotos" navigation={this.props.navigation}/>
         </VStack>
         
     )
