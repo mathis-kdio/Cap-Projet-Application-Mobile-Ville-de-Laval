@@ -66,7 +66,7 @@ class SignalementDateLieu extends React.Component {
   }
 
   render() {
-    let text = 'Waiting..';
+    let text = 'En attente de la localisation..';
     if (this.state.errorMsg) {
       text = this.state.errorMsg;
     }
