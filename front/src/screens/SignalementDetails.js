@@ -30,7 +30,7 @@ class SignalementDetails extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1}}>
         <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "position" : undefined}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
           style={{flex: 1}}
           enabled
         >
