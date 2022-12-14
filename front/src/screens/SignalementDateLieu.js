@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { HStack, VStack, Text, Box, Spacer, Pressable } from "native-base";
+import { HStack, VStack, Text, Box, Spacer, Pressable, Button } from "native-base";
 import StepButton from '../components/StepButton';
 import { Entypo } from '@expo/vector-icons'; 
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment/moment';
+import * as Location from 'expo-location';
 
 class SignalementDateLieu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       date: new Date(),
-      btnDisabled: false
+      btnDisabled: false,
+      location: undefined,
+      errorMsg: ""
     }
   }
 
@@ -45,7 +48,30 @@ class SignalementDateLieu extends React.Component {
     })
   };
 
+  async _requestPermissionLocation() {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      this.setState({
+        errorMsg: 'Permission to access location was denied'
+      })  
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    console.log(location)
+    this.setState({
+      location: location
+    })  
+  }
+
   render() {
+    let text = 'Waiting..';
+    if (this.state.errorMsg) {
+      text = this.state.errorMsg;
+    }
+    else if (this.state.location) {
+      text = JSON.stringify(this.state.location);
+    }
     return (
       <VStack flex={1} marginX={5}>
         <Text fontSize="2xl" fontWeight="bold">Date</Text>
@@ -68,8 +94,8 @@ class SignalementDateLieu extends React.Component {
           </HStack>
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
-        
-
+        <Button onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
+        <Text>{text}</Text>
         <Spacer/>
         <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
