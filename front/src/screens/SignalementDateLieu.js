@@ -5,6 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment/moment';
 import * as Location from 'expo-location';
+import MapView from 'react-native-maps';
 
 class SignalementDateLieu extends React.Component {
   constructor(props) {
@@ -96,6 +97,7 @@ class SignalementDateLieu extends React.Component {
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
         <Button onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
         <Text>{text}</Text>
+        <MapView style={{width: '100%', height: '100%'}}/>
         <Spacer/>
         <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
       </VStack>
