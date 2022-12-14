@@ -26,21 +26,24 @@ class SignalementDateLieu extends React.Component {
             <Text fontSize="2xl" fontWeight="bold">Date</Text>
             <Box bg="#C30065" rounded="md" marginTop={5} alignItems="center">
                 <HStack alignItems="center">
-                    <DateTimePicker
-                        value={this.state.date}
-                        mode="date"
-                        textColor='white'
-                        minimumDate={new Date()}
-                        onChange={(event, date) => {
-                            onChange(null, date);
-                        }}
-                    />
-                    <Pressable onPress={() => onChange(null, new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={50} color="black"/></Pressable>
+                  <Pressable onPress={() => this._onChange(new Date(this.state.date.setDate(this.state.date.getDate() - 1)))}>
+                  <Entypo name="chevron-left" size={30} color="white"/>
+                  </Pressable>
+                  <DateTimePicker
+                      value={this.state.date}
+                      mode="date"
+                      textColor='white'
+                      minimumDate={new Date()}
+                      onChange={(event, date) => {
+                          onChange(null, date);
+                      }}
+                  />
+                  <Pressable onPress={() => onChange(null, new Date(this.state.date.setDate(this.state.date.getDate() + 1)))}><Entypo name="chevron-right" size={30} color="white"/></Pressable>
                 </HStack>
             </Box>
             <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
             <Spacer/>
-            <StepButton navigate="SignalementPhotos" navigation={this.props.navigation}/>
+            <StepButton navigate="SignalementPhoto" navigation={this.props.navigation}/>
         </VStack>
         
     )
