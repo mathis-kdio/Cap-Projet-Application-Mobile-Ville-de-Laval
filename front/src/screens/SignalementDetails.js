@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VStack, Text, TextArea, Spacer } from "native-base";
 import StepButton from '../components/StepButton';
+import { KeyboardAvoidingView } from 'react-native';
 
 class SignalementDetails extends React.Component {
   constructor(props) {
@@ -27,17 +28,23 @@ class SignalementDetails extends React.Component {
 
   render() {
     return (
-      <VStack flex={1} marginX={5}>
-        <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
-        <TextArea 
-          h={20}
-          placeholder="Décrivez le problème ici"
-          w="100%"
-          onChangeText={(text) => this._textAreaChanged(text)}
-        />
-        <Spacer/>
-        <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
-      </VStack>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        flex={1}
+        //h={{base: "400px", lg: "auto"}}
+      >
+        <VStack flex={1} marginX={5}>
+          <Text fontSize="2xl" fontWeight="bold">Quel est le problème ?</Text>
+          <TextArea 
+            h={20}
+            placeholder="Décrivez le problème ici"
+            w="100%"
+            onChangeText={(text) => this._textAreaChanged(text)}
+          />
+          <Spacer/>
+          <StepButton _navigation={() => this._navigation()} btnDisabled={this.state.btnDisabled}/>
+        </VStack>
+      </KeyboardAvoidingView>
     )
   }
 }
