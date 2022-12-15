@@ -18,7 +18,7 @@ class SignalementCameraPreview extends React.Component {
           source={{uri: photo && photo.uri}}
           style={styles.imageBackground}
         >
-        <HStack flex={1} alignItems="flex-end" justifyContent="space-around">
+        <HStack flex={1} alignItems="flex-end" justifyContent="space-around" marginBottom={5}>
           <TouchableOpacity onPress={() => retakePicture()} >
             <Box margin={2} padding={4} bg="white" rounded="md">
               <Text>Reprendre la photo</Text>

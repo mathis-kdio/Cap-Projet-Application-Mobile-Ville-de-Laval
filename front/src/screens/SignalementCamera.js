@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     height: 70,
     bottom: 0,
     borderRadius: 50,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    marginBottom: '5%'
   }
 });
 

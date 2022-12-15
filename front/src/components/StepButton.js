@@ -19,6 +19,7 @@ class StepButton extends React.Component {
         _disabled={{
           bg: "gray.400",
         }}
+        marginBottom={5}
       >
         <HStack alignItems="center" marginX={5}>
           <Text color="white" fontWeight="bold">Passer à l'étape suivante</Text>
