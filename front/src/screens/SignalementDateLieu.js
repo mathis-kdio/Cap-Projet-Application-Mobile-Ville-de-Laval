@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HStack, VStack, Text, Box, Spacer, Pressable, Button } from "native-base";
+import { HStack, VStack, Text, Box, Spacer, Pressable, Button, Input } from "native-base";
 import StepButton from '../components/StepButton';
 import { Entypo } from '@expo/vector-icons'; 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -14,9 +14,10 @@ class SignalementDateLieu extends React.Component {
     this.state = {
       date: new Date(),
       btnDisabled: false,
-      location: undefined,
+      location: {},
       regionName: undefined,
-      errorMsg: ""
+      errorMsg: "",
+      txtSearch: ""
     }
   }
 
@@ -26,7 +27,7 @@ class SignalementDateLieu extends React.Component {
       params: {
         details: this.props.route.params.details
       }
-    })
+    });
   }
 
   _dateTimePicker() {
@@ -48,8 +49,8 @@ class SignalementDateLieu extends React.Component {
     this.setState({
       date: new Date(selectedDate),
       showDatePicker: false
-    })
-  };
+    });
+  }
 
   async _requestPermissionLocation() {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -57,24 +58,41 @@ class SignalementDateLieu extends React.Component {
       this.setState({
         errorMsg: "L'autorisation d'accéder à l'emplacement a été refusée"
       })  
-      return;
+      return false;
     }
+    return true;
+  }
 
+  async _getCurrentPosition() {
+    let granted = await this._requestPermissionLocation();
+    if (!granted)
+      return;
     let location = await Location.getCurrentPositionAsync({});
     let { longitude, latitude} = location.coords;
     let regionName = await Location.reverseGeocodeAsync({longitude, latitude});
     this.setState({
-      location: location,
+      location: location.coords,
       regionName: regionName[0]
-    })
+    });
+    this._updateMap(location.coords.latitude, location.coords.longitude);
+  }
+
+  async _getGeocode() {
+    let location = await Location.geocodeAsync(this.state.txtSearch + " Laval France");
+    this.setState({
+      location: location[0]
+    });
+    this._updateMap(location[0].latitude, location[0].longitude);
+  }
+
+  _updateMap(latitude, longitude) {
     this.mapRef.animateToRegion({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01
-      },
-      3 * 1000
-    );
+      latitude: latitude,
+      longitude: longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
+    },
+    3 * 1000);
   }
 
   render() {
@@ -85,12 +103,6 @@ class SignalementDateLieu extends React.Component {
     else if (this.state.regionName) {
       let rn = this.state.regionName;
       text = ''.concat(rn.name, ' ', rn.street, ' ', rn.postalCode, ' ', rn.city);
-    }
-    let latitude = 48.07065
-    let longitude = -0.77354
-    if (this.state.location && this.state.location.coords) {
-      latitude = this.state.location.coords.latitude
-      longitude = this.state.location.coords.longitude
     }
     return (
       <VStack flex={1} marginX={5}>
@@ -114,7 +126,11 @@ class SignalementDateLieu extends React.Component {
           </HStack>
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
-        <Button bg="#C30065" onPress={() => this._requestPermissionLocation()}>Me localiser</Button>
+        <HStack marginY={2}>
+          <Input flex={1} marginRight="2" onChangeText={(text) => this.setState({txtSearch: text})}/>
+          <Button bg="#C30065" onPress={() => this._getGeocode()} isDisabled={this.state.txtSearch.length == 0}>Chercher</Button>
+        </HStack>
+        <Button bg="#C30065" onPress={() => this._getCurrentPosition()}>Me localiser</Button>
         <Text alignSelf="center" fontSize="lg">{text}</Text>
         <Box flex={1}>
           <MapView
@@ -129,8 +145,8 @@ class SignalementDateLieu extends React.Component {
           >
             <Marker
               coordinate={{
-                latitude: latitude,
-                longitude: longitude
+                latitude: this.state.location.latitude ? this.state.location.latitude : 48.07065,
+                longitude: this.state.location.longitude ? this.state.location.longitude : -0.77354
               }}
             />
           </MapView>
