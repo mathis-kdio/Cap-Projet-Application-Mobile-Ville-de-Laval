@@ -11,6 +11,7 @@ class SignalementDateLieu extends React.Component {
   constructor(props) {
     super(props)
     this.mapRef = null;
+    this.txtSearch = "";
     this.state = {
       date: new Date(),
       btnDisabled: false,
@@ -26,7 +27,7 @@ class SignalementDateLieu extends React.Component {
       params: {
         details: this.props.route.params.details
       }
-    })
+    });
   }
 
   _dateTimePicker() {
@@ -48,8 +49,8 @@ class SignalementDateLieu extends React.Component {
     this.setState({
       date: new Date(selectedDate),
       showDatePicker: false
-    })
-  };
+    });
+  }
 
   async _requestPermissionLocation() {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -59,28 +60,28 @@ class SignalementDateLieu extends React.Component {
       })  
       return false;
     }
-    return true
+    return true;
   }
 
   async _getCurrentPosition() {
-    let granted = await this._requestPermissionLocation()
+    let granted = await this._requestPermissionLocation();
     if (!granted)
-      return
+      return;
     let location = await Location.getCurrentPositionAsync({});
     let { longitude, latitude} = location.coords;
     let regionName = await Location.reverseGeocodeAsync({longitude, latitude});
     this.setState({
       location: location.coords,
       regionName: regionName[0]
-    })
+    });
     this._updateMap(location.coords.latitude, location.coords.longitude);
   }
 
   async _getGeocode() {
-    let location = await Location.geocodeAsync("rue solferino laval");
+    let location = await Location.geocodeAsync(this.txtSearch);
     this.setState({
       location: location[0]
-    })
+    });
     this._updateMap(location[0].latitude, location[0].longitude);
   }
 
@@ -91,8 +92,7 @@ class SignalementDateLieu extends React.Component {
       latitudeDelta: 0.01,
       longitudeDelta: 0.01
     },
-    3 * 1000
-  );
+    3 * 1000);
   }
 
   render() {
@@ -127,10 +127,10 @@ class SignalementDateLieu extends React.Component {
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
         <HStack marginY={2}>
-          <Input flex={1} marginRight="2"></Input>
+          <Input flex={1} marginRight="2" onChangeText={(text) => this.txtSearch = text}/>
           <Button bg="#C30065" onPress={() => this._getGeocode()}>Chercher</Button>
         </HStack>
-        <Button bg="#C30065" onPress={() => this._getCurrentPosition()}>Me localiser</Button>
+        <Button bg="#C30065" onPress={() => this._getCurrentPosition()} disabled={this.txtSearch.length == 0}>Me localiser</Button>
         <Text alignSelf="center" fontSize="lg">{text}</Text>
         <Box flex={1}>
           <MapView
