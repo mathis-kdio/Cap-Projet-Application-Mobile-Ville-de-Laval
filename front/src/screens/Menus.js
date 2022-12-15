@@ -24,12 +24,31 @@ class Menus extends React.Component {
   }
 
   _loadMenu() {
+    console.log("h");
+    this.getMovies();
     let menu = MenusData.find(obj => {
       if (obj.date == moment(this.state.date).format('D/MM/YYYY'))
         return obj;
     })
     this.setState({current_menu: menu});
   };
+
+  async getMovies() {
+    fetch('http://localhost:5000/menus/92/18/25/2022-12-13')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        alert(JSON.stringify(responseJson));
+        console.log(responseJson);
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+        console.error(error);
+      });
+  }
+  
+  test(json) {
+    console.log(json)
+  }
 
   _onChange(selectedDate) {
     this.setState({
