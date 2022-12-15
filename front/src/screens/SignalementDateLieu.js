@@ -11,13 +11,13 @@ class SignalementDateLieu extends React.Component {
   constructor(props) {
     super(props)
     this.mapRef = null;
-    this.txtSearch = "";
     this.state = {
       date: new Date(),
       btnDisabled: false,
       location: {},
       regionName: undefined,
-      errorMsg: ""
+      errorMsg: "",
+      txtSearch: ""
     }
   }
 
@@ -78,7 +78,7 @@ class SignalementDateLieu extends React.Component {
   }
 
   async _getGeocode() {
-    let location = await Location.geocodeAsync(this.txtSearch);
+    let location = await Location.geocodeAsync(this.state.txtSearch + " Laval France");
     this.setState({
       location: location[0]
     });
@@ -127,10 +127,10 @@ class SignalementDateLieu extends React.Component {
         </Box>
         <Text fontSize="2xl" fontWeight="bold">Lieu</Text>
         <HStack marginY={2}>
-          <Input flex={1} marginRight="2" onChangeText={(text) => this.txtSearch = text}/>
-          <Button bg="#C30065" onPress={() => this._getGeocode()}>Chercher</Button>
+          <Input flex={1} marginRight="2" onChangeText={(text) => this.setState({txtSearch: text})}/>
+          <Button bg="#C30065" onPress={() => this._getGeocode()} isDisabled={this.state.txtSearch.length == 0}>Chercher</Button>
         </HStack>
-        <Button bg="#C30065" onPress={() => this._getCurrentPosition()} disabled={this.txtSearch.length == 0}>Me localiser</Button>
+        <Button bg="#C30065" onPress={() => this._getCurrentPosition()}>Me localiser</Button>
         <Text alignSelf="center" fontSize="lg">{text}</Text>
         <Box flex={1}>
           <MapView
